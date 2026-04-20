@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overclock</title>
+
+    <!-- Kéo Tailwind CSS để làm giao diện -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Kéo ReactJS -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Kéo Babel để dịch code React (JSX) ngay trên trình duyệt -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { background-color: #111827; }
+        /* Hiệu ứng ẩn thanh cuộn */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <!-- Nơi chứa App React -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // 1. Kéo các hooks của React ra để dùng
+        const { useState, useEffect, useCallback, useRef } = React;
+
+        // 2. Icon tự tạo (Thay thế cho lucide-react để file chạy độc lập 100%)
+        const Zap = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>;
+        const Play = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>;
+        const PlayCircle = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>;
+        const Pause = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>;
+        const Settings = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>;
+        const Upload = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>;
+        const RefreshCcw = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 2v6h6"/><path d="M21 12A9 9 0 0 0 6 5.3L3 8"/><path d="M21 22v-6h-6"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/></svg>;
+        const FastForward = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 19 22 12 13 5 13 19"/><polygon points="2 19 11 12 2 5 2 19"/></svg>;
+        const Coffee = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>;
+        const CheckCircle2 = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>;
+
+        // 3. Dữ liệu mặc định
+        const defaultLessonData = [
+          {k:"指針", hv:"CHỈ CHÂM", r:"ししん", v:"kim chỉ nam", ej:"政策の指針を示す。", er:"せいさくのししんをしめす。\n🇬🇧 EN: guideline / pointer\n🧠 Kanji: 指 (Chỉ: chỉ ra) + 針 (Châm: cái kim)", ev:"Đưa ra kim chỉ nam của chính sách.", v2:"phương châm", ev2:"Hãy lấy triết lý đó làm phương châm sống."},
+          {k:"指紋", hv:"CHỈ VĂN", r:"しもん", v:"dấu vân tay", ej:"現場で指紋を採取する。", er:"げんばでしもんをさいしゅする。\n🇬🇧 EN: fingerprint\n🧠 Kanji: 指 (Chỉ: ngón tay) + 紋 (Văn: hoa văn)", ev:"Thu thập dấu vân tay tại hiện trường.", v2:"vân tay", ev2:"Chiếc điện thoại này mở khóa bằng vân tay rất nhạy."}
+        ];
+
+        const shuffle = (array) => [...array].sort(() => Math.random() - 0.5);
+
+        const phaseNamesMap = {
+          'LEARN': 'CÂU LÝ THUYẾT',
+          'QUIZ1': 'VÒNG 1: CHỌN NGHĨA CỦA TỪ',
+          'QUIZ2': 'VÒNG 2: ĐOÁN NGỮ CẢNH TỪ',
+          'QUIZ3': 'VÒNG 3: NHÌN NGHĨA TÌM CÁCH ĐỌC',
+          'QUIZ4': 'VÒNG 4: NHÌN NGHĨA TÌM KANJI',
+          'QUIZ5': 'VÒNG 5: NGHE HIỂU (ĐỌC HIRAGANA ĐOÁN NGHĨA)',
+          'TRANSITION': 'NGHỈ'
+        };
+
+        const repositoryLessonFiles = [
+          'test2_131-180.json',
+          'test2-181-230.json',
+          'test2-231-280.json',
+          'test2-281-350.json',
+          'test2_281-350.json',
+          'test3_01-51.json',
+          'test3_52-101.json',
+          'test3_102-151.json',
+          'test3_152-201.json',
+          'test3-1-50.json'
+        ];
+
+        // 4. Component Chính
+        function App() {
+          const [activeLessonData, setActiveLessonData] = useState(defaultLessonData);
+          const [lessonName, setLessonName] = useState("Bài test (2 từ)");
+          const [selectedLessonFile, setSelectedLessonFile] = useState(repositoryLessonFiles[0]);
+          const [repoLoadStatus, setRepoLoadStatus] = useState('');
+          const [isLoadingRepoLesson, setIsLoadingRepoLesson] = useState(false);
+          
+          const [phase, setPhase] = useState('START'); 
+          const [targetPhase, setTargetPhase] = useState(null); 
+          const [batch, setBatch] = useState([]);
+          const [remainingWords, setRemainingWords] = useState([]);
+          const [completedCount, setCompletedCount] = useState(0);
+          const [currentIndex, setCurrentIndex] = useState(0);
+          const [timeLeft, setTimeLeft] = useState(0);
+          const [isRunning, setIsRunning] = useState(false);
+          const [isPaused, setIsPaused] = useState(false);
+          const [showSettings, setShowSettings] = useState(false);
+          
+          const [options, setOptions] = useState([]);
+          const [feedback, setFeedback] = useState(null); 
+          
+          const [settings, setSettings] = useState({
+            LEARN: 15, QUIZ1: 5, QUIZ2: 5, QUIZ3: 5, QUIZ4: 5, QUIZ5: 5, TRANSITION: 5
+          });
+
+          const BATCH_SIZE = 10;
+          const fileInputRef = useRef(null);
+
+          useEffect(() => {
+            setRemainingWords(shuffle([...activeLessonData]));
+            setCompletedCount(0);
+          }, [activeLessonData]);
+
+          // Hàm xử lý upload file JSON
+          const handleFileUpload = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              try {
+                const json = JSON.parse(event.target.result);
+                if (Array.isArray(json) && json.length > 0) {
+                  setActiveLessonData(json);
+                  setLessonName(file.name);
+                  setPhase('START');
+                } else {
+                  alert("File JSON không hợp lệ! Vui lòng tải file chứa mảng Array các từ vựng.");
+                }
+              } catch (err) {
+                alert("Lỗi đọc file JSON! Đảm bảo file đúng định dạng.");
+              }
+            };
+            reader.readAsText(file);
+            e.target.value = null;
+          };
+
+          const handleLoadRepoLesson = async () => {
+            if (!selectedLessonFile) return;
+            setIsLoadingRepoLesson(true);
+            setRepoLoadStatus('');
+
+            try {
+              const response = await fetch(encodeURI(selectedLessonFile), { cache: 'no-store' });
+              if (!response.ok) {
+                throw new Error(`Không tải được file ${selectedLessonFile} (HTTP ${response.status}).`);
+              }
+
+              const json = await response.json();
+              if (!Array.isArray(json) || json.length === 0) {
+                throw new Error(`File ${selectedLessonFile} không đúng định dạng mảng từ vựng.`);
+              }
+
+              setActiveLessonData(json);
+              setLessonName(selectedLessonFile);
+              setPhase('START');
+              setRepoLoadStatus(`Đã nạp: ${selectedLessonFile} (${json.length} từ).`);
+            } catch (err) {
+              if (window.location.protocol === 'file:') {
+                setRepoLoadStatus('Bạn đang mở file bằng file:// nên fetch bị chặn. Hãy chạy qua server (VD: python -m http.server 5500) hoặc deploy lên GitHub Pages.');
+              } else {
+                setRepoLoadStatus(err.message || 'Lỗi tải dữ liệu từ repo.');
+              }
+            } finally {
+              setIsLoadingRepoLesson(false);
+            }
+          };
+
+          const startSession = () => {
+            let nextBatch = [];
+            let newRemaining = [];
+            
+            if (remainingWords.length === 0) {
+              const newShuffled = shuffle([...activeLessonData]);
+              nextBatch = newShuffled.slice(0, BATCH_SIZE);
+              newRemaining = newShuffled.slice(BATCH_SIZE);
+              setCompletedCount(0);
+            } else {
+              nextBatch = remainingWords.slice(0, BATCH_SIZE);
+              newRemaining = remainingWords.slice(BATCH_SIZE);
+            }
+
+            setBatch(shuffle(nextBatch));
+            setRemainingWords(newRemaining);
+            setPhase('LEARN');
+            setCurrentIndex(0);
+            setTimeLeft(settings.LEARN);
+            setIsRunning(true);
+            setIsPaused(false);
+            setShowSettings(false);
+            setFeedback(null);
+          };
+
+          const generateOptions = useCallback((currentWord) => {
+            if (!currentWord) return;
+            let wrongOptions = shuffle(activeLessonData.filter(w => w.k !== currentWord.k)).slice(0, 3);
+            setOptions(shuffle([currentWord, ...wrongOptions]));
+          }, [activeLessonData]);
+
+          const getNextPhase = (currentPhase) => {
+            switch(currentPhase) {
+              case 'LEARN': return 'QUIZ1';
+              case 'QUIZ1': return 'QUIZ2';
+              case 'QUIZ2': return 'QUIZ3';
+              case 'QUIZ3': return 'QUIZ4';
+              case 'QUIZ4': return 'QUIZ5';
+              case 'QUIZ5': return 'DONE';
+              default: return 'DONE';
+            }
+          };
+
+          const handleNextPhase = useCallback(() => {
+            setFeedback(null);
+            const next = getNextPhase(phase);
+            
+            if (next === 'DONE') {
+              setCompletedCount(prev => prev + batch.length);
+              setPhase('DONE');
+              setIsRunning(false);
+            } else {
+              setTargetPhase(next);
+              setPhase('TRANSITION');
+              setTimeLeft(settings.TRANSITION);
+            }
+          }, [phase, batch, settings.TRANSITION]);
+
+          const handleTimeout = useCallback(() => {
+            if (feedback !== null || isPaused || showSettings) return;
+            
+            if (phase === 'TRANSITION') {
+              setPhase(targetPhase);
+              setCurrentIndex(0);
+              setTimeLeft(settings[targetPhase] || 5);
+              const shuffledBatch = shuffle([...batch]);
+              setBatch(shuffledBatch);
+              if (targetPhase.startsWith('QUIZ')) generateOptions(shuffledBatch[0]);
+              return;
+            }
+
+            if (phase === 'LEARN') {
+              if (currentIndex < batch.length - 1) {
+                setCurrentIndex(currentIndex + 1);
+                setTimeLeft(settings.LEARN);
+              } else {
+                handleNextPhase();
+              }
+            } else if (phase.startsWith('QUIZ')) {
+              setFeedback('wrong');
+              setTimeout(() => {
+                if (currentIndex < batch.length - 1) {
+                  setCurrentIndex(currentIndex + 1);
+                  setTimeLeft(settings[phase] || 5);
+                  generateOptions(batch[currentIndex + 1]);
+                } else {
+                  handleNextPhase();
+                }
+                setFeedback(null);
+              }, 500); 
+            }
+          }, [phase, targetPhase, currentIndex, batch, handleNextPhase, generateOptions, feedback, settings, isPaused, showSettings]);
+
+          useEffect(() => {
+            let timerId;
+            if (timeLeft > 0 && isRunning && feedback === null && !isPaused && !showSettings) {
+              timerId = setTimeout(() => setTimeLeft(t => t - 1), 1000);
+            }
+            return () => clearTimeout(timerId);
+          }, [timeLeft, isRunning, feedback, isPaused, showSettings]);
+
+          useEffect(() => {
+            if (timeLeft === 0 && isRunning && feedback === null && !isPaused && !showSettings) {
+              handleTimeout();
+            }
+          }, [timeLeft, isRunning, feedback, handleTimeout, isPaused, showSettings]);
+
+          const handleAnswer = (option) => {
+            if (feedback !== null || isPaused || showSettings) return; 
+            const currentWord = batch[currentIndex];
+            if (!currentWord) return;
+
+            if (option.k === currentWord.k) {
+              setFeedback('correct');
+              setTimeout(() => {
+                if (currentIndex < batch.length - 1) {
+                  setCurrentIndex(currentIndex + 1);
+                  setTimeLeft(settings[phase] || 5);
+                  generateOptions(batch[currentIndex + 1]);
+                } else {
+                  handleNextPhase();
+                }
+                setFeedback(null);
+              }, 300); 
+            } else {
+              setFeedback('wrong');
+              setTimeout(() => setFeedback(null), 300);
+            }
+          };
+
+          const handleSettingChange = (key, value) => {
+            setSettings(prev => ({ ...prev, [key]: Number(value) }));
+          };
+
+          const renderTimerBar = (maxTime) => {
+            const percentage = (maxTime > 0) ? (timeLeft / maxTime) * 100 : 0;
+            return (
+              <div className="w-full bg-gray-700 h-2 mt-4 rounded-full overflow-hidden relative">
+                <div 
+                  className={`h-full transition-all duration-1000 ease-linear ${timeLeft <= 2 ? 'bg-red-500' : 'bg-green-500'} ${isPaused || showSettings ? 'opacity-50' : 'opacity-100'}`}
+                  style={{ width: `${percentage}%` }}
+                ></div>
+              </div>
+            );
+          };
+
+          const SettingsPanel = () => (
+            <div className="bg-gray-700/80 p-5 rounded-2xl mb-6 backdrop-blur-sm border border-gray-600 shadow-xl w-full">
+              <div className="flex items-center gap-2 mb-4 text-gray-200 font-bold justify-center text-lg border-b border-gray-600 pb-2">
+                <Settings className="w-5 h-5" /> CÀI ĐẶT THỜI GIAN (GIÂY)
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                {['LEARN', 'QUIZ1', 'QUIZ2', 'QUIZ3', 'QUIZ4', 'QUIZ5'].map(k => (
+                    <div key={k} className="bg-gray-800 p-2 rounded-lg border border-gray-600">
+                      <label className="text-[10px] text-yellow-400 block mb-1 font-bold">{k}</label>
+                      <input type="number" min="1" value={settings[k]} onChange={e => handleSettingChange(k, e.target.value)} className="w-full bg-transparent text-white font-bold text-center outline-none"/>
+                    </div>
+                ))}
+                <div className="bg-gray-800 p-2 rounded-lg border border-gray-600 col-span-2">
+                  <label className="text-xs text-green-400 block mb-1 font-bold">NGHỈ GIỮA HIỆP (TRANSITION)</label>
+                  <input type="number" min="1" value={settings.TRANSITION} onChange={e => handleSettingChange('TRANSITION', e.target.value)} className="w-full bg-transparent text-white font-bold text-center outline-none"/>
+                </div>
+              </div>
+              {phase !== 'START' && (
+                 <button onClick={() => setShowSettings(false)} className="mt-4 w-full bg-green-600 hover:bg-green-500 py-2 rounded-lg text-white font-bold">ĐÓNG & ÁP DỤNG</button>
+              )}
+            </div>
+          );
+
+          if (phase === 'START') {
+            return (
+              <div className="flex flex-col items-center justify-center min-h-screen text-white p-4 font-sans selection:bg-red-500 pb-20">
+                <div className="max-w-md w-full bg-gray-800 p-8 rounded-2xl shadow-2xl text-center border-t-4 border-red-500">
+                  <Zap className="w-16 h-16 text-red-500 mx-auto mb-4 animate-pulse" />
+                  <h1 className="text-3xl font-black mb-2 text-red-500">Overclock</h1>
+                  
+                  <div className="mb-6 p-4 bg-gray-900 border border-blue-500/30 rounded-xl relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                    <p className="text-xs text-blue-400 font-bold mb-1 uppercase tracking-wider">BÀI HỌC HIỆN TẠI</p>
+                    <p className="font-medium text-gray-200 truncate">{lessonName}</p>
+                    <p className="text-sm text-gray-400 mt-1">Tổng số: {activeLessonData.length} từ</p>
+
+                    <div className="mt-3 p-3 rounded-lg border border-cyan-500/40 bg-cyan-900/20 text-left">
+                      <p className="text-[11px] text-cyan-300 font-bold uppercase tracking-wide mb-2">Nạp bài trực tiếp từ repo</p>
+                      <select
+                        value={selectedLessonFile}
+                        onChange={(e) => setSelectedLessonFile(e.target.value)}
+                        className="w-full mb-2 bg-gray-900 text-gray-100 border border-gray-600 rounded-md px-2 py-2 text-sm"
+                      >
+                        {repositoryLessonFiles.map((fileName) => (
+                          <option key={fileName} value={fileName}>{fileName}</option>
+                        ))}
+                      </select>
+                      <button
+                        onClick={handleLoadRepoLesson}
+                        disabled={isLoadingRepoLesson}
+                        className={`w-full font-bold py-2 rounded-lg text-sm border ${isLoadingRepoLesson ? 'bg-gray-700 border-gray-600 text-gray-300 cursor-not-allowed' : 'bg-cyan-600/30 hover:bg-cyan-600/50 text-cyan-200 border-cyan-400/60'}`}
+                      >
+                        {isLoadingRepoLesson ? 'Đang nạp...' : 'NẠP BÀI TỪ REPO'}
+                      </button>
+                      {repoLoadStatus && (
+                        <p className="mt-2 text-xs text-gray-300 leading-relaxed">{repoLoadStatus}</p>
+                      )}
+                    </div>
+                    
+                    <input type="file" accept=".json" onChange={handleFileUpload} className="hidden" ref={fileInputRef} />
+                    <button onClick={() => fileInputRef.current?.click()} className="mt-3 w-full flex items-center justify-center gap-2 bg-blue-600/20 hover:bg-blue-600/40 text-blue-400 border border-blue-500/50 font-bold py-2 px-4 rounded-lg transition-all text-sm">
+                      <Upload className="w-4 h-4" /> TẢI FILE BÀI HỌC MỚI (.json)
+                    </button>
+                  </div>
+                  
+                  <SettingsPanel />
+
+                  <div className="mb-6 py-2 px-4 bg-gray-900 border border-gray-700 rounded-lg inline-block w-full">
+                    <span className="text-gray-400">Tiến độ bài này: </span>
+                    <span className="text-green-400 font-bold text-xl">{completedCount} / {activeLessonData.length}</span>
+                  </div>
+
+                  <button 
+                    onClick={startSession} disabled={activeLessonData.length === 0}
+                    className={`w-full flex items-center justify-center gap-2 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.4)] ${activeLessonData.length === 0 ? 'bg-gray-600 cursor-not-allowed' : 'bg-red-600 hover:bg-red-500'}`}
+                  >
+                    <Play className="w-5 h-5" />
+                    {completedCount === 0 ? "VỤT" : "HỌC MẺ TIẾP THEO"}
+                  </button>
+                </div>
+              </div>
+            );
+          }
+
+          if (phase === 'DONE') {
+            return (
+              <div className="flex flex-col items-center justify-center min-h-screen text-white p-4">
+                <div className="max-w-md w-full bg-gray-800 p-8 rounded-2xl shadow-2xl text-center border-t-4 border-green-500">
+                  <CheckCircle2 className="w-20 h-20 text-green-500 mx-auto mb-4" />
+                  <h1 className="text-3xl font-black mb-4">MẺ TỪ HOÀN THÀNH!</h1>
+                  <div className="mb-8 py-3 px-6 bg-gray-900 border border-gray-700 rounded-xl inline-block shadow-inner">
+                     <div className="text-sm text-gray-400 mb-1">Tiến độ cày cuốc</div>
+                     <div className="text-3xl font-black text-yellow-400">{completedCount} / {activeLessonData.length}</div>
+                  </div>
+                  {remainingWords.length === 0 ? (
+                    <div className="space-y-4">
+                      <p className="text-green-400 font-bold text-xl mb-4">🎉 ĐÃ CÀY XONG BÀI NÀY!</p>
+                      <button onClick={startSession} className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold py-4 px-6 rounded-xl">
+                        <RefreshCcw className="w-5 h-5" /> CÀI LẠI TỪ ĐẦU
+                      </button>
+                      <button onClick={() => setPhase('START')} className="w-full mt-2 text-gray-400 underline">Về Trang Chủ</button>
+                    </div>
+                  ) : (
+                    <button onClick={startSession} className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-6 rounded-xl">
+                      <FastForward className="w-5 h-5" /> MẺ TIẾP THEO
+                    </button>
+                  )}
+                </div>
+              </div>
+            );
+          }
+
+          const InGameTopBar = () => (
+            <div className="absolute top-4 right-4 flex gap-2 z-50">
+              <button onClick={() => {if(!showSettings) setIsPaused(!isPaused)}} className={`p-3 rounded-full ${isPaused ? 'bg-red-500 animate-pulse' : 'bg-gray-800'}`}>
+                {isPaused ? <PlayCircle className="w-6 h-6 text-white"/> : <Pause className="w-6 h-6 text-yellow-400"/>}
+              </button>
+              <button onClick={() => setShowSettings(!showSettings)} className={`p-3 rounded-full ${showSettings ? 'bg-blue-500' : 'bg-gray-800'}`}>
+                <Settings className="w-6 h-6 text-white"/>
+              </button>
+            </div>
+          );
+
+          // CẬP NHẬT: Overlay lúc Pause sẽ trong suốt và để nút Tiếp tục ở dưới cùng để không che chữ
+          const InGameOverlay = () => {
+            if (!isPaused && !showSettings) return null;
+            return (
+              <div className={`absolute inset-0 z-40 flex flex-col items-center rounded-3xl ${showSettings ? 'justify-center bg-black/80 backdrop-blur-md p-4' : 'justify-end pb-6 bg-black/20'}`}>
+                {showSettings ? (
+                  <div className="w-full max-w-sm"><SettingsPanel /></div>
+                ) : (
+                  <div className="text-center w-full px-4 animate-in fade-in">
+                    <button onClick={() => setIsPaused(false)} className="bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-8 rounded-full text-xl flex items-center justify-center gap-2 mx-auto shadow-[0_0_15px_rgba(220,38,38,0.5)] transition-transform hover:scale-105 border-2 border-red-400 animate-pulse">
+                       <Play className="w-5 h-5" /> TIẾP TỤC
+                    </button>
+                  </div>
+                )}
+              </div>
+            );
+          };
+
+          if (phase === 'TRANSITION') {
+            return (
+              <div className="flex flex-col items-center justify-center min-h-screen text-white p-4 relative">
+                <InGameTopBar />
+                <div className="max-w-md w-full bg-gray-800 p-8 rounded-3xl text-center border-2 border-blue-500 relative h-[500px] flex flex-col justify-center">
+                   <InGameOverlay />
+                   <Coffee className="w-16 h-16 text-blue-400 mx-auto mb-4 z-10" />
+                   <h2 className="text-2xl font-black text-blue-400 mb-2 z-10">NGHỈ NGƠI HẠ NHIỆT NÃO</h2>
+                   <div className="text-7xl font-black text-white mb-6 z-10">{timeLeft}s</div>
+                   <div className="bg-gray-900/80 p-6 rounded-xl mb-8 z-10">
+                      <p className="text-sm text-gray-400 uppercase font-bold mb-2">Chuẩn bị bước vào</p>
+                      <p className="text-xl font-black text-yellow-400">{phaseNamesMap[targetPhase]}</p>
+                   </div>
+                   <button onClick={() => { if(!isPaused && !showSettings) handleTimeout() }} className="z-10 w-full bg-gray-700 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2">
+                     Bỏ qua <FastForward className="w-5 h-5" />
+                   </button>
+                </div>
+              </div>
+            );
+          }
+
+          const currentWord = batch[currentIndex];
+          if (!currentWord) return <div className="text-white text-center mt-20"><RefreshCcw className="w-12 h-12 text-blue-500 animate-spin mx-auto"/>Đang tải...</div>;
+
+          if (phase === 'LEARN') {
+            return (
+              <div className="flex flex-col items-center justify-center min-h-screen text-white p-4 relative">
+                <InGameTopBar />
+                <div className="max-w-lg w-full">
+                  <div className="flex justify-between items-center mb-4 text-gray-400 font-bold">
+                    <span className="text-blue-400">{phaseNamesMap[phase]}</span>
+                    <span>{currentIndex + 1} / {batch.length}</span>
+                  </div>
+                  <div className="bg-gray-800 rounded-3xl p-8 relative border border-gray-700 flex flex-col items-center text-center min-h-[450px]">
+                    <InGameOverlay />
+                    <div className="absolute top-4 right-6 text-4xl font-black text-red-500 opacity-80">{timeLeft}s</div>
+                    <div className="mt-8 mb-2">
+                      <h2 className="text-5xl font-black text-white mb-1">{currentWord.k}</h2>
+                      <p className="text-sm font-bold text-gray-400 tracking-widest uppercase mb-2">[{currentWord.hv}]</p>
+                      <p className="text-xl font-medium text-blue-300">{currentWord.r}</p>
+                    </div>
+                    
+                    {/* CẬP NHẬT: Hiện cả nghĩa v và v2 ở lý thuyết */}
+                    <div className="bg-blue-900/30 text-blue-200 font-bold py-2 px-6 rounded-lg mb-6 text-center w-full">
+                      <div className="text-2xl uppercase">{currentWord.v}</div>
+                      {currentWord.v2 && <div className="text-lg text-yellow-400 mt-1 normal-case border-t border-blue-500/30 pt-1">Hoặc: {currentWord.v2}</div>}
+                    </div>
+                    
+                    <div className="w-full bg-gray-900/50 p-6 rounded-xl text-left border-l-4 border-yellow-500">
+                      <p className="text-lg font-bold text-white mb-1 italic">"{currentWord.ej}"</p>
+                      
+                      <div className="text-sm text-gray-400 mb-3 leading-relaxed whitespace-pre-wrap">
+                        {currentWord.er.split('\n').map((line, idx) => (
+                          <React.Fragment key={idx}>
+                            {line}
+                            <br/>
+                          </React.Fragment>
+                        ))}
+                      </div>
+
+                      <p className="text-lg text-green-400 font-medium">{currentWord.ev}</p>
+                    </div>
+                    <div className="w-full">{renderTimerBar(settings.LEARN)}</div>
+                  </div>
+                  <button onClick={() => { if(!isPaused && !showSettings) handleTimeout() }} className="mt-6 w-full flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-xl">
+                    Đã thuộc <FastForward className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            );
+          }
+
+          let quizTitle = phaseNamesMap[phase];
+          let questionContent = null;
+          let phaseSettingTime = settings[phase];
+
+          if (phase === 'QUIZ1') {
+            questionContent = <><h2 className="text-5xl font-black text-yellow-400 mb-2">{currentWord.k}</h2><p className="text-2xl text-blue-300">{currentWord.r}</p></>;
+          } else if (phase === 'QUIZ2') {
+            const regex = new RegExp(currentWord.v, 'i');
+            let mixedSentence = currentWord.ev.replace(regex, `<span class="text-red-500 font-black text-3xl px-2">[ ${currentWord.k} ]</span>`);
+            if (mixedSentence === currentWord.ev) mixedSentence = `Ngữ cảnh chứa: <span class="text-red-500 font-black text-3xl px-2">[ ${currentWord.k} ]</span>`;
+            questionContent = <div className="text-2xl font-medium leading-relaxed" dangerouslySetInnerHTML={{ __html: mixedSentence }} />;
+          } else if (phase === 'QUIZ3') {
+            questionContent = <h2 className="text-4xl font-black text-blue-400 uppercase tracking-wide">{currentWord.v2}</h2>;
+          } else if (phase === 'QUIZ4') {
+            questionContent = <h2 className="text-4xl font-black text-green-400 uppercase tracking-wide">{currentWord.v}</h2>;
+          } else if (phase === 'QUIZ5') {
+            const regex2 = new RegExp(currentWord.v2, 'i');
+            let mixedSentence4 = currentWord.ev2.replace(regex2, `<span class="text-blue-400 font-black text-3xl px-2">[ ____ ]</span>`);
+            if (mixedSentence4 === currentWord.ev2) mixedSentence4 = `Ngữ cảnh: <span class="text-blue-400 font-black text-3xl px-2">[ ${currentWord.r} ]</span> (${currentWord.ev2})`;
+            questionContent = <div className="text-2xl font-medium leading-relaxed" dangerouslySetInnerHTML={{ __html: mixedSentence4 }} />;
+          }
+
+          return (
+            <div className={`flex flex-col items-center justify-center min-h-screen p-4 transition-colors ${feedback === 'wrong' ? 'bg-red-900' : 'bg-gray-900'} text-white relative`}>
+              <InGameTopBar />
+              <div className="max-w-lg w-full mt-10">
+                <div className="flex justify-between items-center mb-4 text-gray-400 font-bold">
+                  <span className="text-red-400">{quizTitle}</span>
+                  <span>{currentIndex + 1} / {batch.length}</span>
+                </div>
+                <div className={`bg-gray-800 rounded-3xl p-8 relative border-2 flex flex-col items-center text-center min-h-[450px] ${feedback === 'wrong' ? 'border-red-500 scale-95' : feedback === 'correct' ? 'border-green-500 scale-105' : 'border-gray-700'}`}>
+                  <InGameOverlay />
+                  <div className="absolute top-4 right-6 text-5xl font-black text-red-500">{timeLeft}</div>
+                  <div className="min-h-[150px] flex flex-col justify-center items-center mt-6 mb-8 w-full z-10">
+                    {questionContent}
+                  </div>
+                  <div className="grid grid-cols-1 gap-3 w-full z-10">
+                    {options.map((opt, idx) => {
+                      let btnText = "";
+                      if (phase === 'QUIZ1' || phase === 'QUIZ2' ) btnText = opt.v;
+                      if (phase === 'QUIZ5') btnText = `${opt.k} (${opt.r})`; //v2
+                      if (phase === 'QUIZ3') btnText = opt.r;
+                      if (phase === 'QUIZ4') btnText = `${opt.k} (${opt.r})`;
+                      return (
+                        <button key={idx} onClick={() => handleAnswer(opt)} disabled={isPaused || showSettings} className={`bg-gray-700 text-white font-bold py-4 px-6 rounded-xl text-lg ${isPaused || showSettings ? 'opacity-50' : 'hover:bg-gray-600 hover:-translate-y-1'}`}>
+                          {btnText}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <div className="w-full mt-6 z-10">{renderTimerBar(phaseSettingTime)}</div>
+                </div>
+              </div>
+            </div>
+          );
+        }
+
+        // 5. Render App ra màn hình
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+[
+  {
+    "k": "兼業", "hv": "KIÊM NGHIỆP", "r": "けんぎょう", 
+    "v": "kiêm nhiệm", "ej": "彼は農家と会社員を兼業している。", 
+    "er": "かれはのうかとがいしゃいんをけんぎょうしている。\n🇬🇧 EN: side business / dual income\n🧠 Kanji: 兼 (Kiêm: kiêm nhiệm) + 業 (Nghiệp: nghề nghiệp)", 
+    "ev": "Anh ấy kiêm nhiệm làm nông và nhân viên công ty.", 
+    "v2": "nghề tay trái", "ev2": "Nhiều người làm thêm nghề tay trái để tăng thu nhập."
+  },
+  {
+    "k": "減少", "hv": "GIẢM THIỂU", "r": "げんしょう", 
+    "v": "giảm sút", "ej": "少子化で人口が減少している。", 
+    "er": "しょうしかでじんこうがげんしょうしている。\n🇬🇧 EN: decrease / reduction\n🧠 Kanji: 減 (Giảm: hao hụt) + 少 (Thiểu: ít)", 
+    "ev": "Dân số giảm sút do tỷ lệ sinh thấp.", 
+    "v2": "thuyên giảm", "ev2": "Triệu chứng bệnh đã thuyên giảm đáng kể."
+  },
+  {
+    "k": "限定", "hv": "HẠN ĐỊNH", "r": "げんてい", 
+    "v": "giới hạn", "ej": "数量限定の商品を買う。", 
+    "er": "すうりょうげんていのしょうひんをかう。\n🇬🇧 EN: limitation / restriction\n🧠 Kanji: 限 (Hạn: giới hạn) + 定 (Định: quyết định)", 
+    "ev": "Mua sản phẩm giới hạn số lượng.", 
+    "v2": "dành riêng", "ev2": "Ưu đãi này chỉ dành riêng cho khách VIP."
+  },
+  {
+    "k": "倹約", "hv": "KIỆM ƯỚC", "r": "けんやく", 
+    "v": "tiết kiệm", "ej": "毎月の生活費を倹約する。", 
+    "er": "まいつきのせいかつひをけんやくする。\n🇬🇧 EN: thrift / economy\n🧠 Kanji: 倹 (Kiệm: tiết kiệm) + 約 (Ước: khế ước, tóm tắt)", 
+    "ev": "Tiết kiệm chi phí sinh hoạt hàng tháng.", 
+    "v2": "tằn tiện", "ev2": "Ông lão sống tằn tiện để dành tiền."
+  },
+  {
+    "k": "混同", "hv": "HỖN ĐỒNG", "r": "こんどう", 
+    "v": "lẫn lộn", "ej": "公私を混同してはいけない。", 
+    "er": "こうしをこんどうしてはいけない。\n🇬🇧 EN: confusion / mixing up\n🧠 Kanji: 混 (Hỗn: hỗn hợp) + 同 (Đồng: cùng nhau)", 
+    "ev": "Không được lẫn lộn công tư.", 
+    "v2": "đánh đồng", "ev2": "Đừng vội đánh đồng mọi người với nhau."
+  },
+  {
+    "k": "賛美", "hv": "TÁN MỸ", "r": "さんび", 
+    "v": "tán dương", "ej": "自然の美しさを賛美する。", 
+    "er": "しぜんのうつくしさをさんびする。\n🇬🇧 EN: praise / glorification\n🧠 Kanji: 賛 (Tán: tán thành, ca ngợi) + 美 (Mỹ: đẹp)", 
+    "ev": "Tán dương vẻ đẹp của thiên nhiên.", 
+    "v2": "ca tụng", "ev2": "Nhà thơ thường ca tụng vẻ đẹp của ánh trăng."
+  },
+  {
+    "k": "侵略", "hv": "XÂM LƯỢC", "r": "しんりゃく", 
+    "v": "xâm lược", "ej": "他国を侵略する行為は許されない。", 
+    "er": "たこくをしんりゃくするこういはゆるされない。\n🇬🇧 EN: invasion / aggression\n🧠 Kanji: 侵 (Xâm: xâm phạm) + 略 (Lược: tóm tắt, cướp đoạt)", 
+    "ev": "Hành vi xâm lược nước khác là không thể tha thứ.", 
+    "v2": "chiếm đóng", "ev2": "Quân địch lên kế hoạch chiếm đóng lãnh thổ."
+  },
+  {
+    "k": "診療", "hv": "CHẨN LIỆU", "r": "しんりょう", 
+    "v": "khám chữa bệnh", "ej": "午後の診療は３時からだ。", 
+    "er": "ごごのしんりょうはさんじからだ。\n🇬🇧 EN: medical examination and treatment\n🧠 Kanji: 診 (Chẩn: chẩn đoán) + 療 (Liệu: trị liệu)", 
+    "ev": "Giờ khám chữa bệnh buổi chiều từ 3 giờ.", 
+    "v2": "điều trị", "ev2": "Bác sĩ khuyên nên nhập viện điều trị dứt điểm."
+  },
+  {
+    "k": "選挙", "hv": "TUYỂN CỬ", "r": "せんきょ", 
+    "v": "bầu cử", "ej": "明日は市長選挙の投票日だ。", 
+    "er": "あしたはしちょうせんきょのとうひょうびだ。\n🇬🇧 EN: election\n🧠 Kanji: 選 (Tuyển: lựa chọn) + 挙 (Cử: bầu lên, cử động)", 
+    "ev": "Ngày mai là ngày bỏ phiếu bầu cử thị trưởng.", 
+    "v2": "tranh cử", "ev2": "Ứng cử viên nỗ lực hết mình cho đợt tranh cử."
+  },
+  {
+    "k": "戦闘", "hv": "CHIẾN ĐẤU", "r": "せんとう", 
+    "v": "chiến đấu", "ej": "激しい戦闘が続いている。", 
+    "er": "はげしいせんとうがつづいている。\n🇬🇧 EN: battle / combat\n🧠 Kanji: 戦 (Chiến: chiến tranh) + 闘 (Đấu: chiến đấu)", 
+    "ev": "Chiến đấu ác liệt vẫn đang tiếp diễn.", 
+    "v2": "giao tranh", "ev2": "Hai phe giao tranh dữ dội tại khu vực bến cảng."
+  },
+  {
+    "k": "潜入", "hv": "TIỀM NHẬP", "r": "せんにゅう", 
+    "v": "thâm nhập", "ej": "スパイが敵の基地に潜入した。", 
+    "er": "スパイがてきのきちにせんにゅうした。\n🇬🇧 EN: infiltration / sneaking in\n🧠 Kanji: 潜 (Tiềm: lặn, ẩn giấu) + 入 (Nhập: đi vào)", 
+    "ev": "Điệp viên đã thâm nhập vào căn cứ địch.", 
+    "v2": "len lỏi", "ev2": "Tên trộm khéo léo len lỏi vào nhà."
+  },
+  {
+    "k": "占領", "hv": "CHIẾM LĨNH", "r": "せんりょう", 
+    "v": "chiếm lĩnh", "ej": "敵の領土を占領する。", 
+    "er": "てきのりょうどをせんりょうする。\n🇬🇧 EN: occupation / capture\n🧠 Kanji: 占 (Chiêm: chiếm lấy) + 領 (Lĩnh: lãnh thổ)", 
+    "ev": "Chiếm lĩnh lãnh thổ địch.", 
+    "v2": "chiếm dụng", "ev2": "Không được chiếm dụng không gian công cộng."
+  },
+  {
+    "k": "損失", "hv": "TỔN THẤT", "r": "そんしつ", 
+    "v": "tổn thất", "ej": "会社に多大な損失を与えた。", 
+    "er": "かいしゃにただいなそんしつをあたえた。\n🇬🇧 EN: loss / damage\n🧠 Kanji: 損 (Tổn: hư hại) + 失 (Thất: mất mát)", 
+    "ev": "Gây tổn thất to lớn cho công ty.", 
+    "v2": "thiệt hại", "ev2": "Cơn bão để lại thiệt hại nặng nề."
+  },
+  {
+    "k": "団結", "hv": "ĐOÀN KẾT", "r": "だんけつ", 
+    "v": "đoàn kết", "ej": "チームが団結して勝利を掴んだ。", 
+    "er": "チームがだんけつしてしょうりをつかんだ。\n🇬🇧 EN: solidarity / unity\n🧠 Kanji: 団 (Đoàn: đoàn thể) + 結 (Kết: kết nối)", 
+    "ev": "Cả đội đoàn kết nắm lấy chiến thắng.", 
+    "v2": "đồng lòng", "ev2": "Chỉ cần đồng lòng thì khó khăn nào cũng qua."
+  },
+  {
+    "k": "沈殿", "hv": "TRẦM ĐIỆN", "r": "ちんでん", 
+    "v": "kết tủa", "ej": "ビーカーの底に不純物が沈殿する。", 
+    "er": "ビーカーのそこにふじゅんぶつがちんでんする。\n🇬🇧 EN: precipitation / settlement\n🧠 Kanji: 沈 (Trầm: chìm) + 殿 (Điện: lắng xuống)", 
+    "ev": "Tạp chất kết tủa dưới đáy cốc.", 
+    "v2": "lắng cặn", "ev2": "Nước ao lâu ngày lắng cặn dưới đáy."
+  },
+  {
+    "k": "沈没", "hv": "TRẦM MỘT", "r": "ちんぼつ", 
+    "v": "chìm", "ej": "台風で船が沈没した。", 
+    "er": "たいふうでふねがちんぼつした。\n🇬🇧 EN: sinking / foundering\n🧠 Kanji: 沈 (Trầm: chìm) + 没 (Một: biến mất)", 
+    "ev": "Tàu bị chìm do bão.", 
+    "v2": "đắm tàu", "ev2": "Lực lượng cứu hộ tìm kiếm nạn nhân vụ đắm tàu."
+  },
+  {
+    "k": "転居", "hv": "CHUYỂN CƯ", "r": "てんきょ", 
+    "v": "chuyển chỗ ở", "ej": "来月、東京へ転居する予定だ。", 
+    "er": "らいげつ、とうきょうへてんきょするよていだ。\n🇬🇧 EN: moving (house) / relocation\n🧠 Kanji: 転 (Chuyển: chuyển đổi) + 居 (Cư: ở)", 
+    "ev": "Dự định tháng sau sẽ chuyển chỗ ở đến Tokyo.", 
+    "v2": "dọn nhà", "ev2": "Cuối tuần này chúng tôi sẽ dọn nhà."
+  },
+  {
+    "k": "点検", "hv": "ĐIỂM KIỂM", "r": "てんけん", 
+    "v": "bảo dưỡng", "ej": "エレベーターの定期点検を行う。", 
+    "er": "エレベーターのていきてんけんをおこなう。\n🇬🇧 EN: inspection / examination\n🧠 Kanji: 点 (Điểm: điểm) + 検 (Kiểm: kiểm tra)", 
+    "ev": "Tiến hành bảo dưỡng định kỳ thang máy.", 
+    "v2": "rà soát", "ev2": "Quản lý yêu cầu rà soát lại hệ thống an ninh."
+  },
+  {
+    "k": "伝言", "hv": "TRUYỀN NGÔN", "r": "でんごん", 
+    "v": "lời nhắn", "ej": "留守番電話に伝言を残す。", 
+    "er": "るすばんでんわにでんごんをのこす。\n🇬🇧 EN: message / word\n🧠 Kanji: 伝 (Truyền: truyền đạt) + 言 (Ngôn: lời nói)", 
+    "ev": "Để lại lời nhắn vào máy trả lời tự động.", 
+    "v2": "dặn dò", "ev2": "Nhớ chuyển lời dặn dò này đến giám đốc."
+  },
+  {
+    "k": "伝達", "hv": "TRUYỀN ĐẠT", "r": "でんたつ", 
+    "v": "truyền đạt", "ej": "指示を正確に伝達する。", 
+    "er": "しじをせいかくにでんたつする。\n🇬🇧 EN: transmission / communication\n🧠 Kanji: 伝 (Truyền: truyền đi) + 達 (Đạt: thông đạt)", 
+    "ev": "Truyền đạt chỉ thị một cách chính xác.", 
+    "v2": "thông báo", "ev2": "Quyết định được thông báo đến toàn nhân viên."
+  },
+  {
+    "k": "展望", "hv": "TRIỂN VỌNG", "r": "てんぼう", 
+    "v": "triển vọng", "ej": "今後の事業の展望を語る。", 
+    "er": "こんごのじぎょうのてんぼうをかたる。\n🇬🇧 EN: prospect / outlook\n🧠 Kanji: 展 (Triển: mở rộng) + 望 (Vọng: nhìn xa)", 
+    "ev": "Nói về triển vọng kinh doanh sắp tới.", 
+    "v2": "tầm nhìn", "ev2": "Lãnh đạo cần có tầm nhìn chiến lược dài hạn."
+  },
+  {
+    "k": "念願", "hv": "NIỆM NGUYỆN", "r": "ねんがん", 
+    "v": "tâm nguyện", "ej": "念願のマイホームを手に入れた。", 
+    "er": "ねんがんのマイホームをてにいれた。\n🇬🇧 EN: heart's desire / earnest wish\n🧠 Kanji: 念 (Niệm: ý niệm) + 願 (Nguyện: mong muốn)", 
+    "ev": "Đã có được ngôi nhà tâm nguyện.", 
+    "v2": "ước ao", "ev2": "Chuyến du lịch hằng ước ao đã thành hiện thực."
+  },
+  {
+    "k": "反響", "hv": "PHẢN HƯỞNG", "r": "はんきょう", 
+    "v": "tiếng vang", "ej": "新番組は大きな反響を呼んだ。", 
+    "er": "しんばんぐみはおおきなはんきょうをよんだ。\n🇬🇧 EN: echo / repercussion / reaction\n🧠 Kanji: 反 (Phản: ngược lại) + 響 (Hưởng: vang dội)", 
+    "ev": "Chương trình mới đã tạo tiếng vang lớn.", 
+    "v2": "dư luận", "ev2": "Bài phát biểu thu hút sự chú ý của dư luận."
+  },
+  {
+    "k": "反撃", "hv": "PHẢN KÍCH", "r": "はんげき", 
+    "v": "phản công", "ej": "敵の隙を見て反撃に出る。", 
+    "er": "てきのすきをみてはんげきにでる。\n🇬🇧 EN: counterattack\n🧠 Kanji: 反 (Phản: ngược lại) + 撃 (Kích: đánh)", 
+    "ev": "Nhìn sơ hở của địch để phản công.", 
+    "v2": "đánh trả", "ev2": "Cô ấy quyết định vùng lên đánh trả."
+  },
+  {
+    "k": "判定", "hv": "PHÁN ĐỊNH", "r": "はんてい", 
+    "v": "phán quyết", "ej": "写真判定で勝敗が決まる。", 
+    "er": "しゃしんはんていでしょうはいがきまる。\n🇬🇧 EN: judgment / decision\n🧠 Kanji: 判 (Phán: phán xét) + 定 (Định: quyết định)", 
+    "ev": "Thắng bại được quyết định bằng phán quyết qua ảnh.", 
+    "v2": "nhận định", "ev2": "Trọng tài nhận định đó không phải lỗi."
+  },
+  {
+    "k": "氾濫", "hv": "PHIẾM LẠM", "r": "はんらん", 
+    "v": "ngập lụt", "ej": "大雨で川が氾濫した。", 
+    "er": "おおあめでのかわがはんらんした。\n🇬🇧 EN: flooding / overflow\n🧠 Kanji: 氾 (Phiếm: tràn lan) + 濫 (Lạm: tràn)", 
+    "ev": "Sông ngập lụt do mưa lớn.", 
+    "v2": "tràn lan", "ev2": "Tin giả lan truyền tràn lan trên mạng xã hội."
+  },
+  {
+    "k": "紛失", "hv": "PHÂN THẤT", "r": "ふんしつ", 
+    "v": "thất lạc", "ej": "パスポートを紛失してしまった。", 
+    "er": "パスポートをふんしつしてしまった。\n🇬🇧 EN: loss / misplacement\n🧠 Kanji: 紛 (Phân: mất) + 失 (Thất: mất mát)", 
+    "ev": "Đã làm thất lạc hộ chiếu.", 
+    "v2": "đánh rơi", "ev2": "Cậu bé khóc vì đánh rơi ví tiền."
+  },
+  {
+    "k": "噴出", "hv": "PHÚN XUẤT", "r": "ふんしゅつ", 
+    "v": "phun trào", "ej": "火山から溶岩が噴出する。", 
+    "er": "かざんからようがんがふんしゅつする。\n🇬🇧 EN: eruption / spewing\n🧠 Kanji: 噴 (Phún: phun ra) + 出 (Xuất: ra ngoài)", 
+    "ev": "Dung nham phun trào từ núi lửa.", 
+    "v2": "bùng nổ", "ev2": "Sự bất mãn của người dân đã bùng nổ."
+  },
+  {
+    "k": "分担", "hv": "PHÂN ĐẢM", "r": "ぶんたん", 
+    "v": "phân chia", "ej": "家事を夫婦で分担する。", 
+    "er": "かじをふうふでぶんたんする。\n🇬🇧 EN: sharing / apportionment\n🧠 Kanji: 分 (Phân: chia) + 担 (Đảm: gánh vác)", 
+    "ev": "Vợ chồng phân chia việc nhà.", 
+    "v2": "san sẻ", "ev2": "Đồng đội tốt luôn biết san sẻ công việc."
+  },
+  {
+    "k": "奮闘", "hv": "PHẤN ĐẤU", "r": "ふんとう", 
+    "v": "phấn đấu", "ej": "彼は目標達成のために奮闘している。", 
+    "er": "かれはもくひょうたっせいのためにおんとうしている。\n🇬🇧 EN: hard struggle / strenuous effort\n🧠 Kanji: 奮 (Phấn: hăng hái) + 闘 (Đấu: chiến đấu)", 
+    "ev": "Anh ấy đang phấn đấu để đạt mục tiêu.", 
+    "v2": "chật vật", "ev2": "Người mẹ đơn thân chật vật làm hai việc nuôi con."
+  },
+  {
+    "k": "分配", "hv": "PHÂN PHỐI", "r": "ぶんぱい", 
+    "v": "phân phối", "ej": "利益を平等に分配する。", 
+    "er": "りえきをびょうどうにぶんぱいする。\n🇬🇧 EN: distribution / allocation\n🧠 Kanji: 分 (Phân: chia) + 配 (Phối: phân phát)", 
+    "ev": "Phân phối lợi nhuận bình đẳng.", 
+    "v2": "chia phần", "ev2": "Bọn cướp chia phần sau phi vụ."
+  },
+  {
+    "k": "分裂", "hv": "PHÂN LIỆT", "r": "ぶんれつ", 
+    "v": "phân liệt", "ej": "細胞が分裂して増殖する。", 
+    "er": "さいぼうがぶんれつしてぞうしょくする。\n🇬🇧 EN: split / division\n🧠 Kanji: 分 (Phân: chia) + 裂 (Liệt: xé rách)", 
+    "ev": "Tế bào phân liệt và nhân lên.", 
+    "v2": "chia rẽ", "ev2": "Tổ chức bị chia rẽ sâu sắc do bất đồng."
+  },
+  {
+    "k": "変革", "hv": "BIẾN CÁCH", "r": "へんかく", 
+    "v": "cải cách", "ej": "政治体制の変革を求める。", 
+    "er": "せいじたいせいのへんかくをもとめる。\n🇬🇧 EN: reform / change\n🧠 Kanji: 変 (Biến: thay đổi) + 革 (Cách: đổi mới)", 
+    "ev": "Yêu cầu cải cách thể chế chính trị.", 
+    "v2": "thay đổi", "ev2": "Cách mạng công nghiệp mang lại thay đổi to lớn."
+  },
+  {
+    "k": "弁護", "hv": "BIỆN HỘ", "r": "べんご", 
+    "v": "bào chữa", "ej": "法廷で依頼人を弁護する。", 
+    "er": "ほうていでいらいにんをべんごする。\n🇬🇧 EN: defense / pleading\n🧠 Kanji: 弁 (Biện: biện luận) + 護 (Hộ: bảo vệ)", 
+    "ev": "Bào chữa cho thân chủ tại tòa.", 
+    "v2": "bênh vực", "ev2": "Người mẹ luôn lên tiếng bênh vực con."
+  },
+  {
+    "k": "弁償", "hv": "BIỆN THƯỜNG", "r": "べんしょう", 
+    "v": "bồi thường", "ej": "壊した窓ガラスを弁償する。", 
+    "er": "こわしたまどガラスをべんしょうする。\n🇬🇧 EN: compensation / reimbursement\n🧠 Kanji: 弁 (Biện: xử lý) + 償 (Thường: đền bù)", 
+    "ev": "Bồi thường kính cửa sổ đã làm vỡ.", 
+    "v2": "đền bù", "ev2": "Công ty bảo hiểm sẽ đền bù thiệt hại."
+  },
+  {
+    "k": "免除", "hv": "MIỄN TRỪ", "r": "めんじょ", 
+    "v": "miễn trừ", "ej": "試験の受験料が免除される。", 
+    "er": "しけんのじゅけんりょうがめんじょされる。\n🇬🇧 EN: exemption / discharge\n🧠 Kanji: 免 (Miễn: tha) + 除 (Trừ: loại trừ)", 
+    "ev": "Được miễn trừ lệ phí thi.", 
+    "v2": "miễn giảm", "ev2": "Sinh viên nghèo được miễn giảm học phí."
+  },
+  {
+    "k": "論議", "hv": "LUẬN NGHỊ", "r": "ろんぎ", 
+    "v": "tranh luận", "ej": "会議で激しい論議が交わされた。", 
+    "er": "かいぎではげしいろんぎがかわされた。\n🇬🇧 EN: discussion / argument\n🧠 Kanji: 論 (Luận: bàn luận) + 議 (Nghị: thảo luận)", 
+    "ev": "Tranh luận gay gắt đã diễn ra trong cuộc họp.", 
+    "v2": "bàn bạc", "ev2": "Vấn đề cần được hội đồng bàn bạc kỹ."
+  },
+  {
+    "k": "引率", "hv": "DẪN SUẤT", "r": "いんそつ", 
+    "v": "dẫn dắt", "ej": "先生が生徒を引率して遠足に行く。", 
+    "er": "せんせいがせいとをいんそつしてえんそくにいく。\n🇬🇧 EN: leading / taking along\n🧠 Kanji: 引 (Dẫn: kéo đi) + 率 (Suất: dẫn đầu)", 
+    "ev": "Giáo viên dẫn dắt học sinh đi dã ngoại.", 
+    "v2": "chỉ huy", "ev2": "Viên tướng trực tiếp chỉ huy đội quân."
+  },
+  {
+    "k": "隠蔽", "hv": "ẨN TẾ", "r": "いんぺい", 
+    "v": "che đậy", "ej": "証拠を隠蔽する工作が発覚した。", 
+    "er": "しょうこをいんぺいするこうさくがはっかくした。\n🇬🇧 EN: concealment / suppression\n🧠 Kanji: 隠 (Ẩn: giấu giếm) + 蔽 (Tế: che đậy)", 
+    "ev": "Thủ đoạn che đậy chứng cứ đã bị phát giác.", 
+    "v2": "lấp liếm", "ev2": "Hắn ta ngụy biện để lấp liếm sai lầm."
+  },
+  {
+    "k": "延滞", "hv": "DUYÊN TRỆ", "r": "えんたい", 
+    "v": "chậm trễ", "ej": "本の返却が延滞している。", 
+    "er": "ほんのへんきゃくがえんたいしている。\n🇬🇧 EN: overdue / in arrears\n🧠 Kanji: 延 (Duyên: kéo dài) + 滞 (Trệ: đình trệ)", 
+    "ev": "Việc trả sách đang bị chậm trễ.", 
+    "v2": "quá hạn", "ev2": "Khoản vay quá hạn sẽ bị tính lãi cao."
+  },
+  {
+    "k": "管轄", "hv": "QUẢN HẠT", "r": "かんかつ", 
+    "v": "thẩm quyền", "ej": "この事件は警察の管轄外だ。", 
+    "er": "このじけんはけいさつのかんかつがいだ。\n🇬🇧 EN: jurisdiction / control\n🧠 Kanji: 管 (Quản: cai quản) + 轄 (Hạt: cai quản)", 
+    "ev": "Vụ án này nằm ngoài thẩm quyền của cảnh sát.", 
+    "v2": "địa bàn", "ev2": "Băng đảng đang cố gắng mở rộng địa bàn."
+  },
+  {
+    "k": "緊迫", "hv": "KHẨN BÁCH", "r": "きんぱく", 
+    "v": "khẩn trương", "ej": "緊迫した事態に対応する。", 
+    "er": "きんぱくしたじたいにたいおうする。\n🇬🇧 EN: tension / strain\n🧠 Kanji: 緊 (Khẩn: cấp bách) + 迫 (Bách: tiến sát)", 
+    "ev": "Ứng phó với tình trạng khẩn trương.", 
+    "v2": "căng thẳng", "ev2": "Bầu không khí trong phòng thi rất căng thẳng."
+  },
+  {
+    "k": "牽引", "hv": "KHIÊN DẪN", "r": "けんいん", 
+    "v": "kéo dắt", "ej": "故障した車をレッカー車で牽引する。", 
+    "er": "こしょうしたくるまをレッカーしゃでけんいんする。\n🇬🇧 EN: towing / traction\n🧠 Kanji: 牽 (Khiên: lôi kéo) + 引 (Dẫn: kéo)", 
+    "ev": "Kéo dắt xe hỏng bằng xe cứu hộ.", 
+    "v2": "đầu tàu", "ev2": "Ngành công nghệ đóng vai trò là đầu tàu kinh tế."
+  },
+  {
+    "k": "嫌悪", "hv": "HIỀM ÁC", "r": "けんお", 
+    "v": "chán ghét", "ej": "嘘をつく人に対して嫌悪を抱く。", 
+    "er": "うそをつくひとにたいしてけんおをいだく。\n🇬🇧 EN: disgust / aversion\n🧠 Kanji: 嫌 (Hiềm: ghét) + 悪 (Ác: tồi tệ)", 
+    "ev": "Mang lòng chán ghét kẻ nói dối.", 
+    "v2": "ác cảm", "ev2": "Cô ấy có ác cảm với những kẻ nịnh bợ."
+  },
+  {
+    "k": "検索", "hv": "KIỂM TÁC", "r": "けんさく", 
+    "v": "tra cứu", "ej": "インターネットで情報を検索する。", 
+    "er": "インターネットでじょうほうをけんさくする。\n🇬🇧 EN: search / look up\n🧠 Kanji: 検 (Kiểm: kiểm tra) + 索 (Tác: tìm kiếm)", 
+    "ev": "Tra cứu thông tin trên internet.", 
+    "v2": "tìm kiếm", "ev2": "Cảnh sát ráo riết tìm kiếm người mất tích."
+  },
+  {
+    "k": "梱包", "hv": "KHỔN BAO", "r": "こんぽう", 
+    "v": "đóng gói", "ej": "商品を丁寧に梱包して発送する。", 
+    "er": "しょうひんをていねいにこんぽうしてはっそうする。\n🇬🇧 EN: packing / packaging\n🧠 Kanji: 梱 (Khổn: đóng gói) + 包 (Bao: bao bọc)", 
+    "ev": "Đóng gói sản phẩm cẩn thận rồi gửi đi.", 
+    "v2": "bọc hàng", "ev2": "Cần tỉ mỉ khi bọc hàng thủy tinh dễ vỡ."
+  },
+  {
+    "k": "山積", "hv": "SƠN TÍCH", "r": "さんせき", 
+    "v": "chất đống", "ej": "解決すべき課題が山積している。", 
+    "er": "かいけつすべきかだいがさんせきしている。\n🇬🇧 EN: huge backlog / piling up\n🧠 Kanji: 山 (Sơn: núi) + 積 (Tích: chất lên)", 
+    "ev": "Các vấn đề cần giải quyết đang chất đống.", 
+    "v2": "ùn ứ", "ev2": "Giao thông bị ùn ứ vào giờ cao điểm."
+  },
+  {
+    "k": "順応", "hv": "THUẬN ỨNG", "r": "じゅんのう", 
+    "v": "thích ứng", "ej": "新しい環境に早く順応する。", 
+    "er": "あたらしいかんきょうにはやくじゅんのうする。\n🇬🇧 EN: adaptation / accommodation\n🧠 Kanji: 順 (Thuận: theo) + 応 (Ứng: đáp ứng)", 
+    "ev": "Nhanh chóng thích ứng với môi trường mới.", 
+    "v2": "hòa nhập", "ev2": "Đứa bé rụt rè nên khó hòa nhập với lớp."
+  },
+  {
+    "k": "尋問", "hv": "TẦM VẤN", "r": "じんもん", 
+    "v": "thẩm vấn", "ej": "警察が容疑者を尋問する。", 
+    "er": "けいさつがようぎしゃをじんもんする。\n🇬🇧 EN: cross-examination / interrogation\n🧠 Kanji: 尋 (Tầm: hỏi) + 問 (Vấn: hỏi)", 
+    "ev": "Cảnh sát thẩm vấn nghi phạm.", 
+    "v2": "tra khảo", "ev2": "Kẻ địch tra khảo anh ta rất dã man."
+  },
+  {
+    "k": "尽力", "hv": "TẬN LỰC", "r": "じんりょく", 
+    "v": "dốc sức", "ej": "プロジェクトの成功に尽力する。", 
+    "er": "プロジェクトのせいこうにじんりょくする。\n🇬🇧 EN: efforts / exertion\n🧠 Kanji: 尽 (Tận: hết sức) + 力 (Lực: sức mạnh)", 
+    "ev": "Dốc sức cho thành công của dự án.", 
+    "v2": "cống hiến", "ev2": "Giáo sư cống hiến cả đời cho khoa học."
+  }
+]
