@@ -58,7 +58,7 @@
           'TRANSITION': 'NGHỈ'
         };
 
-        const repositoryLessonFiles = [
+        const initialRepositoryLessonFiles = [
           'test2_131-180.json',
           'test2-181-230.json',
           'test2-231-280.json',
@@ -71,13 +71,46 @@
           'test3-1-50.json'
         ];
 
+        const uniqueSortedFiles = (files) => Array.from(new Set(files.filter(Boolean))).sort();
+
+        const detectGitHubPagesRepo = () => {
+          const hostParts = window.location.hostname.split('.');
+          if (hostParts.length < 3 || hostParts[1] !== 'github' || hostParts[2] !== 'io') {
+            return null;
+          }
+
+          const owner = hostParts[0];
+          const repo = window.location.pathname.split('/').filter(Boolean)[0] || '';
+          if (!owner || !repo) return null;
+
+          return { owner, repo };
+        };
+
+        const fetchRepoJsonFiles = async (owner, repo) => {
+          const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents`;
+          const response = await fetch(apiUrl, { cache: 'no-store' });
+          if (!response.ok) {
+            throw new Error(`Không quét được danh sách file JSON (HTTP ${response.status}).`);
+          }
+
+          const entries = await response.json();
+          if (!Array.isArray(entries)) return [];
+
+          return entries
+            .filter((item) => item && item.type === 'file' && typeof item.name === 'string' && item.name.toLowerCase().endsWith('.json'))
+            .map((item) => item.name);
+        };
+
         // 4. Component Chính
         function App() {
           const [activeLessonData, setActiveLessonData] = useState(defaultLessonData);
           const [lessonName, setLessonName] = useState("Bài test (2 từ)");
-          const [selectedLessonFile, setSelectedLessonFile] = useState(repositoryLessonFiles[0]);
+          const [repositoryLessonFiles, setRepositoryLessonFiles] = useState(initialRepositoryLessonFiles);
+          const [selectedLessonFile, setSelectedLessonFile] = useState(initialRepositoryLessonFiles[0] || '');
+          const [manualLessonFile, setManualLessonFile] = useState('');
           const [repoLoadStatus, setRepoLoadStatus] = useState('');
           const [isLoadingRepoLesson, setIsLoadingRepoLesson] = useState(false);
+          const [repoDiscoveryStatus, setRepoDiscoveryStatus] = useState('');
           
           const [phase, setPhase] = useState('START'); 
           const [targetPhase, setTargetPhase] = useState(null); 
@@ -129,26 +162,34 @@
             e.target.value = null;
           };
 
-          const handleLoadRepoLesson = async () => {
-            if (!selectedLessonFile) return;
+          const handleLoadRepoLesson = async (fileNameOverride = '') => {
+            const targetFile = (fileNameOverride || selectedLessonFile || '').trim().replace(/^\/+/, '');
+            if (!targetFile) {
+              setRepoLoadStatus('Nhập hoặc chọn tên file JSON trước khi nạp.');
+              return;
+            }
+
             setIsLoadingRepoLesson(true);
             setRepoLoadStatus('');
 
             try {
-              const response = await fetch(encodeURI(selectedLessonFile), { cache: 'no-store' });
+              const response = await fetch(encodeURI(targetFile), { cache: 'no-store' });
               if (!response.ok) {
-                throw new Error(`Không tải được file ${selectedLessonFile} (HTTP ${response.status}).`);
+                throw new Error(`Không tải được file ${targetFile} (HTTP ${response.status}).`);
               }
 
               const json = await response.json();
               if (!Array.isArray(json) || json.length === 0) {
-                throw new Error(`File ${selectedLessonFile} không đúng định dạng mảng từ vựng.`);
+                throw new Error(`File ${targetFile} không đúng định dạng mảng từ vựng.`);
               }
 
               setActiveLessonData(json);
-              setLessonName(selectedLessonFile);
+              setLessonName(targetFile);
+              setSelectedLessonFile(targetFile);
+              setManualLessonFile(targetFile);
+              setRepositoryLessonFiles((prev) => uniqueSortedFiles([...prev, targetFile]));
               setPhase('START');
-              setRepoLoadStatus(`Đã nạp: ${selectedLessonFile} (${json.length} từ).`);
+              setRepoLoadStatus(`Đã nạp: ${targetFile} (${json.length} từ).`);
             } catch (err) {
               if (window.location.protocol === 'file:') {
                 setRepoLoadStatus('Bạn đang mở file bằng file:// nên fetch bị chặn. Hãy chạy qua server (VD: python -m http.server 5500) hoặc deploy lên GitHub Pages.');
@@ -159,6 +200,40 @@
               setIsLoadingRepoLesson(false);
             }
           };
+
+          const handleManualLoad = async () => {
+            await handleLoadRepoLesson(manualLessonFile);
+          };
+
+          const discoverRepoLessonFiles = useCallback(async () => {
+            const repoInfo = detectGitHubPagesRepo();
+            if (!repoInfo) {
+              setRepoDiscoveryStatus('Auto quét chỉ hoạt động trên GitHub Pages. Bạn vẫn có thể nhập tay tên file.');
+              return;
+            }
+
+            setRepoDiscoveryStatus('Đang quét danh sách JSON trên repo...');
+            try {
+              const foundFiles = await fetchRepoJsonFiles(repoInfo.owner, repoInfo.repo);
+              if (!foundFiles.length) {
+                setRepoDiscoveryStatus('Không thấy file JSON nào ở thư mục gốc repo.');
+                return;
+              }
+
+              const mergedFiles = uniqueSortedFiles([...initialRepositoryLessonFiles, ...foundFiles]);
+              setRepositoryLessonFiles(mergedFiles);
+              if (!selectedLessonFile && mergedFiles.length > 0) {
+                setSelectedLessonFile(mergedFiles[0]);
+              }
+              setRepoDiscoveryStatus(`Đã quét thấy ${foundFiles.length} file JSON từ repo.`);
+            } catch (err) {
+              setRepoDiscoveryStatus(err.message || 'Không quét được danh sách JSON từ repo.');
+            }
+          }, [selectedLessonFile]);
+
+          useEffect(() => {
+            discoverRepoLessonFiles();
+          }, [discoverRepoLessonFiles]);
 
           const startSession = () => {
             let nextBatch = [];
@@ -346,20 +421,48 @@
                       <p className="text-[11px] text-cyan-300 font-bold uppercase tracking-wide mb-2">Nạp bài trực tiếp từ repo</p>
                       <select
                         value={selectedLessonFile}
-                        onChange={(e) => setSelectedLessonFile(e.target.value)}
+                        onChange={(e) => {
+                          setSelectedLessonFile(e.target.value);
+                          setManualLessonFile(e.target.value);
+                        }}
                         className="w-full mb-2 bg-gray-900 text-gray-100 border border-gray-600 rounded-md px-2 py-2 text-sm"
                       >
                         {repositoryLessonFiles.map((fileName) => (
                           <option key={fileName} value={fileName}>{fileName}</option>
                         ))}
                       </select>
+                      <div className="flex gap-2 mb-2">
+                        <button
+                          onClick={discoverRepoLessonFiles}
+                          className="flex-1 font-bold py-2 rounded-lg text-xs border bg-gray-700/50 hover:bg-gray-700 text-gray-200 border-gray-500"
+                        >
+                          QUÉT JSON MỚI
+                        </button>
+                        <button
+                          onClick={handleLoadRepoLesson}
+                          disabled={isLoadingRepoLesson}
+                          className={`flex-1 font-bold py-2 rounded-lg text-sm border ${isLoadingRepoLesson ? 'bg-gray-700 border-gray-600 text-gray-300 cursor-not-allowed' : 'bg-cyan-600/30 hover:bg-cyan-600/50 text-cyan-200 border-cyan-400/60'}`}
+                        >
+                          {isLoadingRepoLesson ? 'Đang nạp...' : 'NẠP TỪ DANH SÁCH'}
+                        </button>
+                      </div>
+                      <input
+                        type="text"
+                        value={manualLessonFile}
+                        onChange={(e) => setManualLessonFile(e.target.value)}
+                        placeholder="Ví dụ: test3_302-351.json"
+                        className="w-full mb-2 bg-gray-900 text-gray-100 border border-gray-600 rounded-md px-2 py-2 text-sm"
+                      />
                       <button
-                        onClick={handleLoadRepoLesson}
+                        onClick={handleManualLoad}
                         disabled={isLoadingRepoLesson}
                         className={`w-full font-bold py-2 rounded-lg text-sm border ${isLoadingRepoLesson ? 'bg-gray-700 border-gray-600 text-gray-300 cursor-not-allowed' : 'bg-cyan-600/30 hover:bg-cyan-600/50 text-cyan-200 border-cyan-400/60'}`}
                       >
-                        {isLoadingRepoLesson ? 'Đang nạp...' : 'NẠP BÀI TỪ REPO'}
+                        {isLoadingRepoLesson ? 'Đang nạp...' : 'NẠP THEO TÊN FILE'}
                       </button>
+                      {repoDiscoveryStatus && (
+                        <p className="mt-2 text-xs text-cyan-200/90 leading-relaxed">{repoDiscoveryStatus}</p>
+                      )}
                       {repoLoadStatus && (
                         <p className="mt-2 text-xs text-gray-300 leading-relaxed">{repoLoadStatus}</p>
                       )}
