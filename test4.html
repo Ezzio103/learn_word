@@ -26,7 +26,7 @@
 
     <script type="text/babel">
         // 1. Kéo các hooks của React ra để dùng
-        const { useState, useEffect, useCallback, useRef } = React;
+        const { useState, useEffect, useCallback, useRef, useMemo } = React;
 
         // 2. Icon tự tạo (Thay thế cho lucide-react để file chạy độc lập 100%)
         const Zap = ({className}) => <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>;
@@ -105,6 +105,12 @@
         function App() {
           const [activeLessonData, setActiveLessonData] = useState(defaultLessonData);
           const [lessonName, setLessonName] = useState("Bài test (2 từ)");
+          const initialRangeEnd = Math.min(50, defaultLessonData.length);
+          const [rangeStartInput, setRangeStartInput] = useState('1');
+          const [rangeEndInput, setRangeEndInput] = useState(String(initialRangeEnd));
+          const [appliedRangeStart, setAppliedRangeStart] = useState(1);
+          const [appliedRangeEnd, setAppliedRangeEnd] = useState(initialRangeEnd);
+          const [rangeMessage, setRangeMessage] = useState(`Mặc định 1-${initialRangeEnd}.`);
           const [repositoryLessonFiles, setRepositoryLessonFiles] = useState(initialRepositoryLessonFiles);
           const [selectedLessonFile, setSelectedLessonFile] = useState(initialRepositoryLessonFiles[0] || '');
           const [manualLessonFile, setManualLessonFile] = useState('');
@@ -133,10 +139,69 @@
           const BATCH_SIZE = 10;
           const fileInputRef = useRef(null);
 
+          const resetRangeToDefault = useCallback((totalWords) => {
+            if (totalWords <= 0) {
+              setRangeStartInput('1');
+              setRangeEndInput('1');
+              setAppliedRangeStart(1);
+              setAppliedRangeEnd(0);
+              setRangeMessage('Danh sách từ vựng đang rỗng.');
+              return;
+            }
+
+            const defaultEnd = Math.min(50, totalWords);
+            setRangeStartInput('1');
+            setRangeEndInput(String(defaultEnd));
+            setAppliedRangeStart(1);
+            setAppliedRangeEnd(defaultEnd);
+            setRangeMessage(`Mặc định 1-${defaultEnd}.`);
+          }, []);
+
+          const normalizeRange = useCallback((startValue, endValue, totalWords) => {
+            if (totalWords <= 0) {
+              return { isValid: false, message: 'Danh sách từ vựng đang rỗng.' };
+            }
+
+            const rawStart = parseInt(startValue, 10);
+            const rawEnd = parseInt(endValue, 10);
+            if (Number.isNaN(rawStart) || Number.isNaN(rawEnd)) {
+              return { isValid: false, message: 'Vui lòng nhập số hợp lệ cho khoảng học.' };
+            }
+
+            const start = Math.min(Math.max(rawStart, 1), totalWords);
+            const end = Math.min(Math.max(rawEnd, 1), totalWords);
+
+            if (start > end) {
+              return { isValid: false, message: 'Số bắt đầu phải nhỏ hơn hoặc bằng số kết thúc.' };
+            }
+
+            return { isValid: true, start, end };
+          }, []);
+
+          const selectedLessonData = useMemo(() => {
+            if (!activeLessonData.length || appliedRangeEnd < appliedRangeStart) return [];
+            return activeLessonData.slice(appliedRangeStart - 1, appliedRangeEnd);
+          }, [activeLessonData, appliedRangeStart, appliedRangeEnd]);
+
+          const handleApplyRange = () => {
+            const normalized = normalizeRange(rangeStartInput, rangeEndInput, activeLessonData.length);
+            if (!normalized.isValid) {
+              setRangeMessage(normalized.message);
+              return;
+            }
+
+            setAppliedRangeStart(normalized.start);
+            setAppliedRangeEnd(normalized.end);
+            setRangeStartInput(String(normalized.start));
+            setRangeEndInput(String(normalized.end));
+            setRangeMessage(`Đã áp dụng khoảng ${normalized.start}-${normalized.end} (${normalized.end - normalized.start + 1} từ).`);
+            setPhase('START');
+          };
+
           useEffect(() => {
-            setRemainingWords(shuffle([...activeLessonData]));
+            setRemainingWords(shuffle([...selectedLessonData]));
             setCompletedCount(0);
-          }, [activeLessonData]);
+          }, [selectedLessonData]);
 
           // Hàm xử lý upload file JSON
           const handleFileUpload = (e) => {
@@ -150,6 +215,7 @@
                 if (Array.isArray(json) && json.length > 0) {
                   setActiveLessonData(json);
                   setLessonName(file.name);
+                  resetRangeToDefault(json.length);
                   setPhase('START');
                 } else {
                   alert("File JSON không hợp lệ! Vui lòng tải file chứa mảng Array các từ vựng.");
@@ -188,6 +254,7 @@
               setSelectedLessonFile(targetFile);
               setManualLessonFile(targetFile);
               setRepositoryLessonFiles((prev) => uniqueSortedFiles([...prev, targetFile]));
+              resetRangeToDefault(json.length);
               setPhase('START');
               setRepoLoadStatus(`Đã nạp: ${targetFile} (${json.length} từ).`);
             } catch (err) {
@@ -238,9 +305,10 @@
           const startSession = () => {
             let nextBatch = [];
             let newRemaining = [];
+            const sourceWords = selectedLessonData;
             
             if (remainingWords.length === 0) {
-              const newShuffled = shuffle([...activeLessonData]);
+              const newShuffled = shuffle([...sourceWords]);
               nextBatch = newShuffled.slice(0, BATCH_SIZE);
               newRemaining = newShuffled.slice(BATCH_SIZE);
               setCompletedCount(0);
@@ -262,9 +330,9 @@
 
           const generateOptions = useCallback((currentWord) => {
             if (!currentWord) return;
-            let wrongOptions = shuffle(activeLessonData.filter(w => w.k !== currentWord.k)).slice(0, 3);
+            let wrongOptions = shuffle(selectedLessonData.filter(w => w.k !== currentWord.k)).slice(0, 3);
             setOptions(shuffle([currentWord, ...wrongOptions]));
-          }, [activeLessonData]);
+          }, [selectedLessonData]);
 
           const getNextPhase = (currentPhase) => {
             switch(currentPhase) {
@@ -417,6 +485,42 @@
                     <p className="font-medium text-gray-200 truncate">{lessonName}</p>
                     <p className="text-sm text-gray-400 mt-1">Tổng số: {activeLessonData.length} từ</p>
 
+                    <div className="mt-3 p-3 rounded-lg border border-amber-500/40 bg-amber-900/20 text-left">
+                      <p className="text-[11px] text-amber-300 font-bold uppercase tracking-wide mb-2">Học theo nhóm con (mặc định 1-50)</p>
+                      <div className="grid grid-cols-2 gap-2 mb-2">
+                        <input
+                          type="number"
+                          min="1"
+                          max={Math.max(1, activeLessonData.length)}
+                          value={rangeStartInput}
+                          onChange={(e) => setRangeStartInput(e.target.value)}
+                          placeholder="Từ số"
+                          className="w-full bg-gray-900 text-gray-100 border border-gray-600 rounded-md px-2 py-2 text-sm"
+                        />
+                        <input
+                          type="number"
+                          min="1"
+                          max={Math.max(1, activeLessonData.length)}
+                          value={rangeEndInput}
+                          onChange={(e) => setRangeEndInput(e.target.value)}
+                          placeholder="Đến số"
+                          className="w-full bg-gray-900 text-gray-100 border border-gray-600 rounded-md px-2 py-2 text-sm"
+                        />
+                      </div>
+                      <button
+                        onClick={handleApplyRange}
+                        className="w-full font-bold py-2 rounded-lg text-sm border bg-amber-600/30 hover:bg-amber-600/50 text-amber-200 border-amber-400/60"
+                      >
+                        ÁP DỤNG KHOẢNG
+                      </button>
+                      <p className="mt-2 text-xs text-amber-100/90 leading-relaxed">
+                        Phạm vi hiện tại: {selectedLessonData.length > 0 ? `${appliedRangeStart}-${appliedRangeEnd}` : 'không hợp lệ'} ({selectedLessonData.length} từ)
+                      </p>
+                      {rangeMessage && (
+                        <p className="mt-1 text-xs text-amber-100/90 leading-relaxed">{rangeMessage}</p>
+                      )}
+                    </div>
+
                     <div className="mt-3 p-3 rounded-lg border border-cyan-500/40 bg-cyan-900/20 text-left">
                       <p className="text-[11px] text-cyan-300 font-bold uppercase tracking-wide mb-2">Nạp bài trực tiếp từ repo</p>
                       <select
@@ -478,12 +582,12 @@
 
                   <div className="mb-6 py-2 px-4 bg-gray-900 border border-gray-700 rounded-lg inline-block w-full">
                     <span className="text-gray-400">Tiến độ bài này: </span>
-                    <span className="text-green-400 font-bold text-xl">{completedCount} / {activeLessonData.length}</span>
+                    <span className="text-green-400 font-bold text-xl">{completedCount} / {selectedLessonData.length}</span>
                   </div>
 
                   <button 
-                    onClick={startSession} disabled={activeLessonData.length === 0}
-                    className={`w-full flex items-center justify-center gap-2 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.4)] ${activeLessonData.length === 0 ? 'bg-gray-600 cursor-not-allowed' : 'bg-red-600 hover:bg-red-500'}`}
+                    onClick={startSession} disabled={selectedLessonData.length === 0}
+                    className={`w-full flex items-center justify-center gap-2 text-white font-bold py-4 px-6 rounded-xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.4)] ${selectedLessonData.length === 0 ? 'bg-gray-600 cursor-not-allowed' : 'bg-red-600 hover:bg-red-500'}`}
                   >
                     <Play className="w-5 h-5" />
                     {completedCount === 0 ? "VỤT" : "HỌC MẺ TIẾP THEO"}
@@ -501,7 +605,7 @@
                   <h1 className="text-3xl font-black mb-4">MẺ TỪ HOÀN THÀNH!</h1>
                   <div className="mb-8 py-3 px-6 bg-gray-900 border border-gray-700 rounded-xl inline-block shadow-inner">
                      <div className="text-sm text-gray-400 mb-1">Tiến độ cày cuốc</div>
-                     <div className="text-3xl font-black text-yellow-400">{completedCount} / {activeLessonData.length}</div>
+                    <div className="text-3xl font-black text-yellow-400">{completedCount} / {selectedLessonData.length}</div>
                   </div>
                   {remainingWords.length === 0 ? (
                     <div className="space-y-4">
