@@ -2,22 +2,22 @@
   {
     "k": "歳暮",
     "hv": "TUẾ MỘ",
-    "r": "せいぼ",
+    "r": "せいぼ／さいぼ",
     "v": "quà cuối năm",
-    "ej": "お世話になった方へ歳暮を贈った。",
-    "er": "おせわになったかたへせいぼをおくった。\\n🇬🇧 EN: year-end gift\\n🧠 Kanji: 歳 (tuế: năm) + 暮 (mộ: cuối năm, chạng vạng) → quà biếu dịp cuối năm",
+    "ej": "お世話になった方に歳暮を贈った。",
+    "er": "おせわになったかたにせいぼをおくった。\\n🇬🇧 EN: year-end gift\\n🧠 Kanji: 歳 (tuế: năm) + 暮 (mộ: cuối năm, chạng vạng)",
     "ev": "Đã tặng quà cuối năm cho người đã giúp đỡ mình.",
-    "v2": "quà biếu",
-    "ev2": "Gia đình tôi chuẩn bị quà biếu để mang sang nhà ông bà."
+    "v2": "quà cuối năm",
+    "ev2": "Công ty gửi quà cuối năm đến các đối tác thân thiết."
   },
   {
     "k": "代案",
     "hv": "ĐẠI ÁN",
     "r": "だいあん",
-    "v": "phương án thay thế",
-    "ej": "元の計画が無理なら、代案を考えよう。",
-    "er": "もとのけいかくがむりなら、だいあんをかんがえよう。\\n🇬🇧 EN: alternative plan\\n🧠 Kanji: 代 (đại: thay thế) + 案 (án: phương án)",
-    "ev": "Nếu kế hoạch ban đầu không được thì hãy nghĩ phương án thay thế.",
+    "v": "phương án khác",
+    "ej": "元の計画が無理なら、代案を考えましょう。",
+    "er": "もとのけいかくがむりなら、だいあんをかんがえましょう。\\n🇬🇧 EN: alternative plan\\n🧠 Kanji: 代 (đại: thay thế) + 案 (án: phương án)",
+    "ev": "Nếu kế hoạch ban đầu không được thì hãy nghĩ phương án khác.",
     "v2": "phương án thay thế",
     "ev2": "Chúng tôi đã chuẩn bị một phương án thay thế cho trường hợp trời mưa."
   },
@@ -25,12 +25,12 @@
     "k": "耐久",
     "hv": "NẠI CỬU",
     "r": "たいきゅう",
-    "v": "bền",
+    "v": "độ bền",
     "ej": "この製品は耐久性が高い。",
-    "er": "このせいひんはたいきゅうせいがたかい。\\n🇬🇧 EN: durability\\n🧠 Kanji: 耐 (nại: chịu đựng) + 久 (cửu: lâu dài)",
+    "er": "このせいひんはたいきゅうせいがたかい。\\n🇬🇧 EN: durability\\n🧠 Kanji: 耐 (nại: chịu được) + 久 (cửu: lâu dài)",
     "ev": "Sản phẩm này có độ bền cao.",
-    "v2": "độ bền",
-    "ev2": "Người mua rất quan tâm đến độ bền của chiếc xe."
+    "v2": "bền",
+    "ev2": "Loại túi này rất bền nên dùng được nhiều năm."
   },
   {
     "k": "胎児",
@@ -48,17 +48,17 @@
     "hv": "NẠI NHIỆT",
     "r": "たいねつ",
     "v": "chịu nhiệt",
-    "ej": "この皿は耐熱ガラスでできている。",
-    "er": "このさらはたいねつガラスでできている。\\n🇬🇧 EN: heat-resistant\\n🧠 Kanji: 耐 (nại: chịu được) + 熱 (nhiệt: nóng)",
-    "ev": "Cái đĩa này được làm bằng thủy tinh chịu nhiệt.",
+    "ej": "この容器は耐熱ガラスでできている。",
+    "er": "このようきはたいねつがらすでできている。\\n🇬🇧 EN: heat-resistant\\n🧠 Kanji: 耐 (nại: chịu được) + 熱 (nhiệt: nóng)",
+    "ev": "Cái vật đựng này được làm bằng thủy tinh chịu nhiệt.",
     "v2": "chịu nhiệt",
-    "ev2": "Loại nhựa này không chịu nhiệt tốt lắm."
+    "ev2": "Loại nhựa này không chịu nhiệt nên không dùng được trong lò vi sóng."
   },
   {
     "k": "大仏",
     "hv": "ĐẠI PHẬT",
     "r": "だいぶつ",
-    "v": "đại Phật",
+    "v": "Đại Phật",
     "ej": "奈良の大仏を見に行った。",
     "er": "ならのだいぶつをみにいった。\\n🇬🇧 EN: Great Buddha\\n🧠 Kanji: 大 (đại: lớn) + 仏 (phật: tượng Phật)",
     "ev": "Đã đi xem tượng Đại Phật ở Nara.",
@@ -82,7 +82,7 @@
     "r": "はいきょ",
     "v": "phế tích",
     "ej": "山の中に古い廃墟が残っている。",
-    "er": "やまのなかにふるいはいきょがのこっている。\\n🇬🇧 EN: ruins, abandoned building\\n🧠 Kanji: 廃 (phế: bỏ hoang) + 墟 (khư: nền cũ, hoang tàn)",
+    "er": "やまのなかにふるいはいきょがのこっている。\\n🇬🇧 EN: ruins, abandoned site\\n🧠 Kanji: 廃 (phế: bỏ hoang) + 墟 (khư: nền cũ, nơi hoang)",
     "ev": "Trong núi còn lại một phế tích cũ.",
     "v2": "đống đổ nát",
     "ev2": "Sau trận cháy, nơi đó chỉ còn là đống đổ nát."
@@ -91,12 +91,12 @@
     "k": "媒体",
     "hv": "MÔI THỂ",
     "r": "ばいたい",
-    "v": "phương tiện truyền tải",
-    "ej": "インターネットは重要な情報媒体だ。",
-    "er": "インターネットはじゅうようなじょうほうばいたいだ。\\n🇬🇧 EN: medium, media\\n🧠 Kanji: 媒 (môi: trung gian) + 体 (thể: dạng, vật thể)",
-    "ev": "Internet là phương tiện truyền tải thông tin quan trọng.",
-    "v2": "phương tiện",
-    "ev2": "Mạng xã hội là phương tiện quảng bá rất hiệu quả."
+    "v": "phương tiện",
+    "ej": "インターネットは重要な広告媒体だ。",
+    "er": "いんたーねっとはじゅうようなこうこくばいたいだ。\\n🇬🇧 EN: medium, media\\n🧠 Kanji: 媒 (môi: trung gian) + 体 (thể: dạng, vật thể)",
+    "ev": "Internet là một phương tiện quảng cáo quan trọng.",
+    "v2": "môi trường truyền tải",
+    "ev2": "Mạng xã hội là môi trường truyền tải thông tin rất nhanh."
   },
   {
     "k": "弊害",
@@ -104,10 +104,10 @@
     "r": "へいがい",
     "v": "tác hại",
     "ej": "長時間労働の弊害が問題になっている。",
-    "er": "ちょうじかんろうどうのへいがいがもんだいになっている。\\n🇬🇧 EN: harmful effect, evil influence\\n🧠 Kanji: 弊 (tệ: tệ hại, xấu) + 害 (hại: tác hại)",
+    "er": "ちょうじかんろうどうのへいがいがもんだいになっている。\\n🇬🇧 EN: harmful effect, ill effect\\n🧠 Kanji: 弊 (tệ: xấu, tệ) + 害 (hại: tác hại)",
     "ev": "Tác hại của việc làm việc thời gian dài đang trở thành vấn đề.",
-    "v2": "tác hại",
-    "ev2": "Việc lệ thuộc điện thoại có nhiều tác hại cho trẻ nhỏ."
+    "v2": "hậu quả xấu",
+    "ev2": "Việc lạm dụng điện thoại gây ra nhiều hậu quả xấu cho trẻ nhỏ."
   },
   {
     "k": "弊社",
@@ -116,9 +116,9 @@
     "v": "công ty chúng tôi",
     "ej": "弊社の製品をご利用いただき、ありがとうございます。",
     "er": "へいしゃのせいひんをごりよういただき、ありがとうございます。\\n🇬🇧 EN: our company (humble)\\n🧠 Kanji: 弊 (tệ: khiêm nhường) + 社 (xã: công ty)",
-    "ev": "Xin cảm ơn đã sử dụng sản phẩm của công ty chúng tôi.",
+    "ev": "Xin cảm ơn vì đã sử dụng sản phẩm của công ty chúng tôi.",
     "v2": "công ty chúng tôi",
-    "ev2": "Công ty chúng tôi sẽ phản hồi yêu cầu của quý khách sớm nhất."
+    "ev2": "Công ty chúng tôi sẽ phản hồi yêu cầu của quý khách trong hôm nay."
   },
   {
     "k": "明細",
@@ -126,10 +126,10 @@
     "r": "めいさい",
     "v": "chi tiết",
     "ej": "請求書の明細を確認してください。",
-    "er": "せいきゅうしょのめいさいをかくにんしてください。\\n🇬🇧 EN: details, breakdown\\n🧠 Kanji: 明 (minh: rõ ràng) + 細 (tế: nhỏ, chi tiết)",
-    "ev": "Hãy xác nhận chi tiết của hóa đơn.",
-    "v2": "chi tiết",
-    "ev2": "Bảng lương tháng này ghi rất rõ từng chi tiết."
+    "er": "せいきゅうしょのめいさいをかくにんしてください。\\n🇬🇧 EN: details, itemization\\n🧠 Kanji: 明 (minh: rõ ràng) + 細 (tế: nhỏ, chi tiết)",
+    "ev": "Hãy xác nhận phần chi tiết của hóa đơn.",
+    "v2": "bảng kê chi tiết",
+    "ev2": "Bảng kê chi tiết trong phiếu lương tháng này rất rõ ràng."
   },
   {
     "k": "命日",
@@ -147,9 +147,9 @@
     "hv": "MÊ LỘ",
     "r": "めいろ",
     "v": "mê cung",
-    "ej": "子どもたちは迷路で遊んでいた。",
-    "er": "こどもたちはめいろであそんでいた。\\n🇬🇧 EN: maze\\n🧠 Kanji: 迷 (mê: lạc) + 路 (lộ: đường)",
-    "ev": "Bọn trẻ đang chơi trong mê cung.",
+    "ej": "この公園には子ども向けの迷路がある。",
+    "er": "このこうえんにはこどもむけのめいろがある。\\n🇬🇧 EN: maze\\n🧠 Kanji: 迷 (mê: lạc) + 路 (lộ: đường)",
+    "ev": "Trong công viên này có một mê cung dành cho trẻ em.",
     "v2": "mê cung",
     "ev2": "Tòa nhà cũ có lối đi phức tạp như mê cung."
   },
@@ -158,9 +158,9 @@
     "hv": "LÔI VŨ",
     "r": "らいう",
     "v": "mưa giông",
-    "ej": "午後から急に雷雨になった。",
-    "er": "ごごからきゅうにらいうになった。\\n🇬🇧 EN: thunderstorm\\n🧠 Kanji: 雷 (lôi: sấm) + 雨 (vũ: mưa)",
-    "ev": "Từ buổi chiều trời đột nhiên thành mưa giông.",
+    "ej": "午後は雷雨になるでしょう。",
+    "er": "ごごはらいうになるでしょう。\\n🇬🇧 EN: thunderstorm\\n🧠 Kanji: 雷 (lôi: sấm) + 雨 (vũ: mưa)",
+    "ev": "Chiều nay chắc sẽ thành mưa giông.",
     "v2": "giông bão",
     "ev2": "Đêm qua có giông bão nên điện bị cắt."
   },
@@ -169,9 +169,9 @@
     "hv": "LINH HỒN",
     "r": "れいこん",
     "v": "linh hồn",
-    "ej": "昔の人は霊魂の存在を信じていた。",
-    "er": "むかしのひとはれいこんのそんざいをしんじていた。\\n🇬🇧 EN: soul, spirit\\n🧠 Kanji: 霊 (linh: linh thiêng, hồn) + 魂 (hồn: linh hồn)",
-    "ev": "Người xưa đã tin vào sự tồn tại của linh hồn.",
+    "ej": "彼は死後も霊魂は残ると信じている。",
+    "er": "かれはしごもれいこんはのこるとしんじている。\\n🇬🇧 EN: soul, spirit\\n🧠 Kanji: 霊 (linh: linh thiêng, hồn) + 魂 (hồn: linh hồn)",
+    "ev": "Anh ấy tin rằng sau khi chết, linh hồn vẫn còn lại.",
     "v2": "linh hồn",
     "ev2": "Bộ phim này nói về hành trình tìm lại linh hồn đã mất."
   },
@@ -180,11 +180,11 @@
     "hv": "HỐI LỘ",
     "r": "わいろ",
     "v": "hối lộ",
-    "ej": "公務員が賄賂を受け取って逮捕された。",
-    "er": "こうむいんがわいろをうけとってたいほされた。\\n🇬🇧 EN: bribe\\n🧠 Kanji: 賄 (hối: lo lót) + 賂 (lộ: quà đút lót)",
-    "ev": "Công chức nhận hối lộ và đã bị bắt.",
+    "ej": "賄賂を受け取った職員が逮捕された。",
+    "er": "わいろをうけとったしょくいんがたいほされた。\\n🇬🇧 EN: bribe\\n🧠 Kanji: 賄 (hối: lo lót) + 賂 (lộ: đút lót)",
+    "ev": "Nhân viên nhận hối lộ đã bị bắt.",
     "v2": "hối lộ",
-    "ev2": "Doanh nghiệp bị điều tra vì nghi đưa hối lộ."
+    "ev2": "Doanh nghiệp đó đang bị điều tra vì nghi đưa hối lộ."
   },
   {
     "k": "応募",
@@ -194,17 +194,17 @@
     "ej": "その仕事に多くの人が応募した。",
     "er": "そのしごとにおおくのひとがおうぼした。\\n🇬🇧 EN: apply, application\\n🧠 Kanji: 応 (ứng: đáp lại) + 募 (mộ: tuyển mộ)",
     "ev": "Nhiều người đã ứng tuyển vào công việc đó.",
-    "v2": "ứng tuyển",
-    "ev2": "Tôi định ứng tuyển vào vị trí này vào tháng tới."
+    "v2": "đăng ký dự tuyển",
+    "ev2": "Tôi định đăng ký dự tuyển vào vị trí này vào tháng tới."
   },
   {
     "k": "行為",
     "hv": "HÀNH VI",
     "r": "こうい",
     "v": "hành vi",
-    "ej": "他人に迷惑をかける行為はやめるべきだ。",
-    "er": "たにんにめいわくをかけるこういはやめるべきだ。\\n🇬🇧 EN: act, conduct\\n🧠 Kanji: 行 (hành: làm) + 為 (vi: hành động)",
-    "ev": "Nên dừng hành vi gây phiền cho người khác.",
+    "ej": "他人に迷惑をかける行為はやめてください。",
+    "er": "たにんにめいわくをかけるこういはやめてください。\\n🇬🇧 EN: act, conduct\\n🧠 Kanji: 行 (hành: làm) + 為 (vi: hành động)",
+    "ev": "Xin hãy dừng hành vi gây phiền cho người khác.",
     "v2": "hành động",
     "ev2": "Hành động đó đã khiến mọi người rất bất ngờ."
   },
@@ -216,19 +216,19 @@
     "ej": "あの時もっと勉強しなかったことを後悔している。",
     "er": "あのときもっとべんきょうしなかったことをこうかいしている。\\n🇬🇧 EN: regret\\n🧠 Kanji: 後 (hậu: sau) + 悔 (hối: hối hận)",
     "ev": "Đang hối hận vì lúc đó đã không học nhiều hơn.",
-    "v2": "hối hận",
-    "ev2": "Sau khi nói nặng lời, anh ấy mới thấy hối hận."
+    "v2": "hối tiếc",
+    "ev2": "Sau khi nói nặng lời, anh ấy mới thấy hối tiếc."
   },
   {
     "k": "航海",
     "hv": "HÀNG HẢI",
     "r": "こうかい",
-    "v": "hải hành",
+    "v": "chuyến hải hành",
     "ej": "船は一か月の航海に出た。",
     "er": "ふねはいっかげつのこうかいにでた。\\n🇬🇧 EN: voyage, sailing\\n🧠 Kanji: 航 (hàng: đi bằng tàu) + 海 (hải: biển)",
-    "ev": "Con tàu đã ra khơi cho chuyến hải hành một tháng.",
-    "v2": "hành trình biển",
-    "ev2": "Hành trình biển lần này kéo dài hơn dự kiến."
+    "ev": "Con tàu đã ra đi cho chuyến hải hành một tháng.",
+    "v2": "ra khơi",
+    "ev2": "Sáng mai con tàu sẽ ra khơi sớm để tránh bão."
   },
   {
     "k": "抗議",
@@ -236,10 +236,10 @@
     "r": "こうぎ",
     "v": "phản đối",
     "ej": "住民は計画に強く抗議した。",
-    "er": "じゅうみんはけいかくにつよくこうぎした。\\n🇬🇧 EN: protest, objection\\n🧠 Kanji: 抗 (kháng: chống lại) + 議 (nghị: bàn luận, nêu ý kiến)",
+    "er": "じゅうみんはけいかくにつよくこうぎした。\\n🇬🇧 EN: protest, objection\\n🧠 Kanji: 抗 (kháng: chống lại) + 議 (nghị: nêu ý kiến)",
     "ev": "Người dân đã phản đối mạnh mẽ kế hoạch.",
-    "v2": "phản đối",
-    "ev2": "Sinh viên tụ tập trước cổng trường để phản đối quyết định mới."
+    "v2": "kháng nghị",
+    "ev2": "Hiệp hội gửi văn bản kháng nghị về quyết định mới."
   },
   {
     "k": "貢献",
@@ -247,7 +247,7 @@
     "r": "こうけん",
     "v": "đóng góp",
     "ej": "彼は地域社会に大きく貢献した。",
-    "er": "かれはちいきしゃかいにおおきくこうけんした。\\n🇬🇧 EN: contribution\\n🧠 Kanji: 貢 (cống: dâng hiến) + 献 (hiến: hiến tặng)",
+    "er": "かれはちいきしゃかいにおおきくこうけんした。\\n🇬🇧 EN: contribution\\n🧠 Kanji: 貢 (cống: dâng hiến) + 献 (hiến: hiến dâng)",
     "ev": "Anh ấy đã đóng góp lớn cho xã hội địa phương.",
     "v2": "cống hiến",
     "ev2": "Những năm tháng cống hiến của ông luôn được mọi người ghi nhớ."
@@ -260,8 +260,8 @@
     "ej": "両社は条件について交渉している。",
     "er": "りょうしゃはじょうけんについてこうしょうしている。\\n🇬🇧 EN: negotiation\\n🧠 Kanji: 交 (giao: trao đổi) + 渉 (thiệp: can dự, thương lượng)",
     "ev": "Hai công ty đang đàm phán về điều kiện.",
-    "v2": "đàm phán",
-    "ev2": "Cuộc đàm phán kéo dài suốt cả buổi chiều."
+    "v2": "thương lượng",
+    "ev2": "Cuộc thương lượng kéo dài đến tận tối."
   },
   {
     "k": "向上",
@@ -269,7 +269,7 @@
     "r": "こうじょう",
     "v": "nâng cao",
     "ej": "サービスの質を向上させたい。",
-    "er": "サービスのしつをこうじょうさせたい。\\n🇬🇧 EN: improvement, enhancement\\n🧠 Kanji: 向 (hướng: hướng tới) + 上 (thượng: lên trên)",
+    "er": "さーびすのしつをこうじょうさせたい。\\n🇬🇧 EN: improvement, enhancement\\n🧠 Kanji: 向 (hướng: hướng tới) + 上 (thượng: lên trên)",
     "ev": "Muốn nâng cao chất lượng dịch vụ.",
     "v2": "cải thiện",
     "ev2": "Công ty đang cố cải thiện môi trường làm việc."
@@ -278,12 +278,12 @@
     "k": "拘束",
     "hv": "CÂU THÚC",
     "r": "こうそく",
-    "v": "ràng buộc",
-    "ej": "長時間の会議に拘束された。",
-    "er": "ちょうじかんのかいぎにこうそくされた。\\n🇬🇧 EN: restraint, confinement\\n🧠 Kanji: 拘 (câu: giữ lại) + 束 (thúc: buộc lại)",
-    "ev": "Đã bị ràng buộc bởi cuộc họp kéo dài nhiều giờ.",
-    "v2": "giam giữ",
-    "ev2": "Nghi phạm bị giam giữ để phục vụ điều tra."
+    "v": "khống chế",
+    "ej": "警備員が男をその場で拘束した。",
+    "er": "けいびいんがおとこをそのばでこうそくした。\\n🇬🇧 EN: restrain, detain\\n🧠 Kanji: 拘 (câu: giữ lại) + 束 (thúc: buộc lại)",
+    "ev": "Nhân viên an ninh đã khống chế người đàn ông ngay tại chỗ.",
+    "v2": "ràng buộc",
+    "ev2": "その契約は私たちを長く ràng buộc với công ty cũ."
   },
   {
     "k": "購読",
@@ -300,23 +300,23 @@
     "k": "交付",
     "hv": "GIAO PHÓ",
     "r": "こうふ",
-    "v": "cấp phát",
-    "ej": "証明書は窓口で交付される。",
-    "er": "しょうめいしょはまどぐちでこうふされる。\\n🇬🇧 EN: issuance, delivery\\n🧠 Kanji: 交 (giao: trao) + 付 (phó: giao cho)",
-    "ev": "Giấy chứng nhận được cấp phát ở quầy.",
-    "v2": "cấp",
-    "ev2": "Thẻ sinh viên sẽ được cấp vào tuần tới."
+    "v": "cấp",
+    "ej": "許可証は来週交付されます。",
+    "er": "きょかしょうはらいしゅうこうふされます。\\n🇬🇧 EN: issue, grant\\n🧠 Kanji: 交 (giao: trao) + 付 (phó: giao cho)",
+    "ev": "Giấy phép sẽ được cấp vào tuần sau.",
+    "v2": "cấp phát",
+    "ev2": "Thẻ sinh viên sẽ được cấp phát vào đầu tháng tư."
   },
   {
     "k": "興奮",
     "hv": "HƯNG PHẤN",
     "r": "こうふん",
-    "v": "phấn khích",
+    "v": "hưng phấn",
     "ej": "試合に勝ってみんな興奮していた。",
-    "er": "しあいにかってみんなこうふんしていた。\\n🇬🇧 EN: excitement\\n🧠 Kanji: 興 (hưng: dấy lên) + 奮 (phấn: hăng hái, phấn chấn)",
-    "ev": "Vì thắng trận nên mọi người đã phấn khích.",
-    "v2": "kích động",
-    "ev2": "Tin tức bất ngờ khiến cả khán phòng trở nên kích động."
+    "er": "しあいにかってみんなこうふんしていた。\\n🇬🇧 EN: excitement, agitation\\n🧠 Kanji: 興 (hưng: dấy lên) + 奮 (phấn: phấn chấn)",
+    "ev": "Vì thắng trận nên mọi người đã hưng phấn.",
+    "v2": "phấn khích",
+    "ev2": "Bọn trẻ phấn khích khi nhìn thấy pháo hoa."
   },
   {
     "k": "考慮",
@@ -326,8 +326,8 @@
     "ej": "安全を第一に考慮すべきだ。",
     "er": "あんぜんをだいいちにこうりょすべきだ。\\n🇬🇧 EN: consideration\\n🧠 Kanji: 考 (khảo: suy nghĩ) + 慮 (lự: cân nhắc)",
     "ev": "Nên cân nhắc an toàn lên hàng đầu.",
-    "v2": "cân nhắc",
-    "ev2": "Chúng tôi sẽ cân nhắc ý kiến của khách hàng."
+    "v2": "tính đến",
+    "ev2": "Khi lập kế hoạch, phải tính đến cả rủi ro nhỏ."
   },
   {
     "k": "崇拝",
@@ -335,10 +335,10 @@
     "r": "すうはい",
     "v": "sùng bái",
     "ej": "彼はその芸術家を崇拝している。",
-    "er": "かれはそのげいじゅつかをすうはいしている。\\n🇬🇧 EN: worship, adoration\\n🧠 Kanji: 崇 (sùng: tôn cao) + 拝 (bái: tôn kính)",
+    "er": "かれはそのげいじゅつかをすうはいしている。\\n🇬🇧 EN: worship, adore\\n🧠 Kanji: 崇 (sùng: tôn cao) + 拝 (bái: tôn kính)",
     "ev": "Anh ấy đang sùng bái nghệ sĩ đó.",
-    "v2": "sùng bái",
-    "ev2": "Một số người trẻ sùng bái thần tượng quá mức."
+    "v2": "tôn sùng",
+    "ev2": "Một số người trẻ tôn sùng thần tượng quá mức."
   },
   {
     "k": "捜査",
@@ -356,9 +356,9 @@
     "hv": "SÁNG TÁC",
     "r": "そうさく",
     "v": "sáng tác",
-    "ej": "彼は毎日小説を創作している。",
-    "er": "かれはまいにちしょうせつをそうさくしている。\\n🇬🇧 EN: creation, creative work\\n🧠 Kanji: 創 (sáng: tạo ra) + 作 (tác: làm)",
-    "ev": "Anh ấy mỗi ngày đều sáng tác tiểu thuyết.",
+    "ej": "彼は休日に短編小説を創作している。",
+    "er": "かれはきゅうじつにたんぺんしょうせつをそうさくしている。\\n🇬🇧 EN: create, creative work\\n🧠 Kanji: 創 (sáng: tạo ra) + 作 (tác: làm)",
+    "ev": "Anh ấy vào ngày nghỉ đang sáng tác truyện ngắn.",
     "v2": "sáng tác",
     "ev2": "Cô ấy thích sáng tác nhạc vào ban đêm."
   },
@@ -368,10 +368,10 @@
     "r": "そうさく",
     "v": "tìm kiếm",
     "ej": "行方不明者の捜索が続いている。",
-    "er": "ゆくえふめいしゃのそうさくがつづいている。\\n🇬🇧 EN: search, hunt\\n🧠 Kanji: 捜 (sưu: tìm) + 索 (sách: dò tìm)",
+    "er": "ゆくえふめいしゃのそうさくがつづいている。\\n🇬🇧 EN: search\\n🧠 Kanji: 捜 (sưu: tìm) + 索 (sách: dò tìm)",
     "ev": "Việc tìm kiếm người mất tích đang tiếp tục.",
-    "v2": "tìm kiếm",
-    "ev2": "Đội cứu hộ vẫn đang tìm kiếm những người còn mất tích."
+    "v2": "lục tìm",
+    "ev2": "Đội cứu hộ đang lục tìm trong đống đổ nát."
   },
   {
     "k": "装飾",
@@ -379,43 +379,43 @@
     "r": "そうしょく",
     "v": "trang trí",
     "ej": "会場は花で美しく装飾されていた。",
-    "er": "かいじょうははなでうつくしくそうしょくされていた。\\n🇬🇧 EN: decoration, ornamentation\\n🧠 Kanji: 装 (trang: trang điểm, lắp đặt) + 飾 (sức: trang sức, tô điểm)",
+    "er": "かいじょうははなでうつくしくそうしょくされていた。\\n🇬🇧 EN: decoration, ornamentation\\n🧠 Kanji: 装 (trang: trang điểm, sắp đặt) + 飾 (sức: tô điểm)",
     "ev": "Hội trường đã được trang trí đẹp bằng hoa.",
-    "v2": "trang trí",
-    "ev2": "Căn phòng được trang trí bằng đèn và ảnh lưu niệm."
+    "v2": "trang hoàng",
+    "ev2": "Căn phòng được trang hoàng bằng đèn và ảnh lưu niệm."
   },
   {
     "k": "想定",
     "hv": "TƯỞNG ĐỊNH",
     "r": "そうてい",
     "v": "giả định",
-    "ej": "想定外の事態が起こった。",
-    "er": "そうていがいのじたいがおこった。\\n🇬🇧 EN: assumption, supposition\\n🧠 Kanji: 想 (tưởng: nghĩ đến) + 定 (định: định ra)",
-    "ev": "Tình huống ngoài giả định đã xảy ra.",
+    "ej": "最悪の事態も想定して準備しておこう。",
+    "er": "さいあくのじたいもそうていしてじゅんびしておこう。\\n🇬🇧 EN: assumption, supposition\\n🧠 Kanji: 想 (tưởng: nghĩ đến) + 定 (định: định ra)",
+    "ev": "Cả tình huống xấu nhất cũng hãy giả định và chuẩn bị trước.",
     "v2": "dự liệu",
-    "ev2": "Chúng tôi phải dự liệu cả những rủi ro nhỏ nhất."
+    "ev2": "Chúng tôi phải dự liệu trước những rủi ro có thể xảy ra."
   },
   {
     "k": "遭難",
     "hv": "TAO NẠN",
     "r": "そうなん",
     "v": "gặp nạn",
-    "ej": "登山中に遭難した人が救助された。",
-    "er": "とざんちゅうにそうなんしたひとがきゅうじょされた。\\n🇬🇧 EN: distress, accident in mountains/sea\\n🧠 Kanji: 遭 (tao: gặp phải) + 難 (nạn: tai nạn, khó khăn)",
-    "ev": "Người gặp nạn trong lúc leo núi đã được cứu hộ.",
-    "v2": "gặp nạn",
-    "ev2": "Tin tức về nhóm du khách gặp nạn khiến ai cũng lo lắng."
+    "ej": "遭難した登山者が無事に救助された。",
+    "er": "そうなんしたとざんしゃがぶじにきゅうじょされた。\\n🇬🇧 EN: meet with disaster, be stranded\\n🧠 Kanji: 遭 (tao: gặp phải) + 難 (nạn: tai nạn, hoạn nạn)",
+    "ev": "Người leo núi gặp nạn đã được cứu hộ an toàn.",
+    "v2": "bị nạn",
+    "ev2": "Tin tức về nhóm du khách bị nạn khiến ai cũng lo lắng."
   },
   {
     "k": "痛感",
     "hv": "THỐNG CẢM",
     "r": "つうかん",
     "v": "thấm thía",
-    "ej": "健康の大切さを痛感した。",
-    "er": "けんこうのたいせつさをつうかんした。\\n🇬🇧 EN: keenly feel, realize deeply\\n🧠 Kanji: 痛 (thống: đau) + 感 (cảm: cảm nhận)",
-    "ev": "Đã thấm thía sự quan trọng của sức khỏe.",
-    "v2": "nhận ra sâu sắc",
-    "ev2": "Sau thất bại đó, tôi mới nhận ra sâu sắc giá trị của sự chuẩn bị."
+    "ej": "失って初めて健康の大切さを痛感した。",
+    "er": "うしなってはじめてけんこうのたいせつさをつうかんした。\\n🇬🇧 EN: realize keenly, feel deeply\\n🧠 Kanji: 痛 (thống: đau) + 感 (cảm: cảm nhận)",
+    "ev": "Mất đi rồi mới lần đầu thấm thía sự quan trọng của sức khỏe.",
+    "v2": "cảm nhận sâu sắc",
+    "ev2": "Sau thất bại đó, tôi mới cảm nhận sâu sắc giá trị của sự chuẩn bị."
   },
   {
     "k": "同意",
@@ -423,10 +423,10 @@
     "r": "どうい",
     "v": "đồng ý",
     "ej": "私はその意見に同意する。",
-    "er": "わたしはそのいけんにどういする。\\n🇬🇧 EN: agreement, consent\\n🧠 Kanji: 同 (đồng: cùng) + 意 (ý: ý kiến)",
+    "er": "わたしはそのいけんにどういする。\\n🇬🇧 EN: agree, consent\\n🧠 Kanji: 同 (đồng: cùng) + 意 (ý: ý kiến)",
     "ev": "Tôi đồng ý với ý kiến đó.",
-    "v2": "đồng ý",
-    "ev2": "Cô ấy đã đồng ý tham gia cùng chúng tôi."
+    "v2": "tán thành",
+    "ev2": "Cả nhóm đều tán thành đề xuất mới."
   },
   {
     "k": "統合",
@@ -434,10 +434,10 @@
     "r": "とうごう",
     "v": "hợp nhất",
     "ej": "二つの部門を統合することになった。",
-    "er": "ふたつのぶもんをとうごうすることになった。\\n🇬🇧 EN: integration, unification\\n🧠 Kanji: 統 (thống: gom lại, thống nhất) + 合 (hợp: hợp lại)",
+    "er": "ふたつのぶもんをとうごうすることになった。\\n🇬🇧 EN: integration, unification\\n🧠 Kanji: 統 (thống: thống nhất) + 合 (hợp: hợp lại)",
     "ev": "Đã quyết định hợp nhất hai bộ phận.",
-    "v2": "hợp nhất",
-    "ev2": "Hệ thống mới sẽ hợp nhất dữ liệu từ nhiều nguồn."
+    "v2": "sáp nhập",
+    "ev2": "Hai hệ thống cũ sẽ được sáp nhập vào năm sau."
   },
   {
     "k": "倒産",
@@ -445,7 +445,7 @@
     "r": "とうさん",
     "v": "phá sản",
     "ej": "景気悪化で多くの会社が倒産した。",
-    "er": "けいきあっかでおおくのかいしゃがとうさんした。\\n🇬🇧 EN: bankruptcy\\n🧠 Kanji: 倒 (đảo: đổ xuống) + 産 (sản: tài sản, sản nghiệp)",
+    "er": "けいきあっかでおおくのかいしゃがとうさんした。\\n🇬🇧 EN: bankruptcy\\n🧠 Kanji: 倒 (đảo: đổ xuống) + 産 (sản: sản nghiệp, tài sản)",
     "ev": "Do kinh tế xấu đi nên nhiều công ty đã phá sản.",
     "v2": "phá sản",
     "ev2": "Cửa hàng nhỏ đó suýt phá sản trong năm ngoái."
@@ -456,7 +456,7 @@
     "r": "とうし",
     "v": "đầu tư",
     "ej": "将来のために教育へ投資するべきだ。",
-    "er": "しょうらいのためにきょういくへとうしするべきだ。\\n🇬🇧 EN: investment\\n🧠 Kanji: 投 (đầu: ném vào, đưa vào) + 資 (tư: vốn, tài nguyên)",
+    "er": "しょうらいのためにきょういくへとうしするべきだ。\\n🇬🇧 EN: investment\\n🧠 Kanji: 投 (đầu: đưa vào) + 資 (tư: vốn)",
     "ev": "Vì tương lai thì nên đầu tư vào giáo dục.",
     "v2": "đầu tư",
     "ev2": "Anh ấy bắt đầu đầu tư vào quỹ từ năm ngoái."
@@ -466,55 +466,55 @@
     "hv": "THỐNG CHẾ",
     "r": "とうせい",
     "v": "kiểm soát",
-    "ej": "物価を統制する政策が導入された。",
-    "er": "ぶっかをとうせいするせいさくがどうにゅうされた。\\n🇬🇧 EN: control, regulation\\n🧠 Kanji: 統 (thống: thống nhất quản lý) + 制 (chế: chế ngự, kiểm soát)",
-    "ev": "Chính sách kiểm soát giá cả đã được đưa vào.",
-    "v2": "kiểm soát",
-    "ev2": "Nhà nước tăng cường kiểm soát thị trường trong giai đoạn này."
+    "ej": "政府は価格を厳しく統制している。",
+    "er": "せいふはかかくをきびしくとうせいしている。\\n🇬🇧 EN: control, regulation\\n🧠 Kanji: 統 (thống: thống nhất quản lý) + 制 (chế: chế ngự, kiểm soát)",
+    "ev": "Chính phủ đang kiểm soát giá một cách nghiêm ngặt.",
+    "v2": "quản chế",
+    "ev2": "Trong thời chiến, nhiều mặt hàng bị quản chế chặt chẽ."
   },
   {
     "k": "統率",
     "hv": "THỐNG SUẤT",
     "r": "とうそつ",
-    "v": "lãnh đạo",
-    "ej": "彼はチームをうまく統率している。",
-    "er": "かれはチームをうまくとうそつしている。\\n🇬🇧 EN: leadership, command\\n🧠 Kanji: 統 (thống: gom lại) + 率 (suất: dẫn dắt)",
-    "ev": "Anh ấy đang lãnh đạo đội rất tốt.",
-    "v2": "chỉ huy",
-    "ev2": "Người đội trưởng phải biết chỉ huy mọi người trong lúc khó khăn."
+    "v": "chỉ huy",
+    "ej": "彼は部下をうまく統率している。",
+    "er": "かれはぶかをうまくとうそつしている。\\n🇬🇧 EN: lead, command\\n🧠 Kanji: 統 (thống: gom lại) + 率 (suất: dẫn dắt)",
+    "ev": "Anh ấy đang chỉ huy cấp dưới rất tốt.",
+    "v2": "lãnh đạo",
+    "ev2": "Người đội trưởng phải biết lãnh đạo cả nhóm trong lúc khó khăn."
   },
   {
     "k": "到達",
     "hv": "ĐÁO ĐẠT",
     "r": "とうたつ",
-    "v": "đạt đến",
+    "v": "đạt tới",
     "ej": "ついに山頂に到達した。",
     "er": "ついにさんちょうにとうたつした。\\n🇬🇧 EN: reach, attain\\n🧠 Kanji: 到 (đáo: đến nơi) + 達 (đạt: tới được)",
-    "ev": "Cuối cùng đã đạt đến đỉnh núi.",
-    "v2": "đạt tới",
-    "ev2": "Dự án đã đạt tới giai đoạn cuối cùng."
+    "ev": "Cuối cùng đã đạt tới đỉnh núi.",
+    "v2": "vươn tới",
+    "ev2": "Công ty muốn vươn tới mục tiêu doanh thu mới."
   },
   {
     "k": "投入",
     "hv": "ĐẦU NHẬP",
     "r": "とうにゅう",
     "v": "đưa vào",
-    "ej": "新しい機械を工場に投入した。",
-    "er": "あたらしいきかいをこうじょうにとうにゅうした。\\n🇬🇧 EN: input,投入\\n🧠 Kanji: 投 (đầu: ném, đưa vào) + 入 (nhập: vào)",
-    "ev": "Đã đưa máy móc mới vào nhà máy.",
-    "v2": "đổ vào",
-    "ev2": "Công ty quyết định đổ thêm vốn vào dự án này."
+    "ej": "会社は新事業に多額の資金を投入した。",
+    "er": "かいしゃはしんじぎょうにたがくのしきんをとうにゅうした。\\n🇬🇧 EN:投入, put in, inject\\n🧠 Kanji: 投 (đầu: ném vào, đưa vào) + 入 (nhập: vào)",
+    "ev": "Công ty đã đưa một khoản vốn lớn vào mảng kinh doanh mới.",
+    "v2": "rót vào",
+    "ev2": "Nhà đầu tư quyết định rót thêm tiền vào dự án này."
   },
   {
     "k": "導入",
     "hv": "ĐẠO NHẬP",
     "r": "どうにゅう",
-    "v": "áp dụng",
-    "ej": "新しい制度を来月導入する。",
-    "er": "あたらしいせいどをらいげつどうにゅうする。\\n🇬🇧 EN: introduction, implementation\\n🧠 Kanji: 導 (đạo: dẫn dắt) + 入 (nhập: đưa vào)",
-    "ev": "Tháng sau sẽ áp dụng chế độ mới.",
-    "v2": "đưa vào",
-    "ev2": "Trường sắp đưa vào một chương trình học mới."
+    "v": "đưa vào",
+    "ej": "新しいシステムを来月導入する。",
+    "er": "あたらしいしすてむをらいげつどうにゅうする。\\n🇬🇧 EN: introduction, implementation\\n🧠 Kanji: 導 (đạo: dẫn dắt) + 入 (nhập: đưa vào)",
+    "ev": "Tháng sau sẽ đưa hệ thống mới vào.",
+    "v2": "áp dụng",
+    "ev2": "Trường sắp áp dụng một chương trình học mới."
   },
   {
     "k": "逃亡",
@@ -522,7 +522,7 @@
     "r": "とうぼう",
     "v": "bỏ trốn",
     "ej": "犯人は現場から逃亡した。",
-    "er": "はんにんはげんばからとうぼうした。\\n🇬🇧 EN: escape, flight\\n🧠 Kanji: 逃 (đào: chạy trốn) + 亡 (vong: mất đi, biến mất)",
+    "er": "はんにんはげんばからとうぼうした。\\n🇬🇧 EN: escape, flee\\n🧠 Kanji: 逃 (đào: chạy trốn) + 亡 (vong: biến mất)",
     "ev": "Hung thủ đã bỏ trốn khỏi hiện trường.",
     "v2": "trốn chạy",
     "ev2": "Tên cướp trốn chạy qua nhiều con hẻm nhỏ."
@@ -532,9 +532,9 @@
     "hv": "ĐỘNG DAO",
     "r": "どうよう",
     "v": "dao động",
-    "ej": "突然の知らせに心が動揺した。",
-    "er": "とつぜんのしらせにこころがどうようした。\\n🇬🇧 EN: disturbance, agitation\\n🧠 Kanji: 動 (động: lay động) + 揺 (dao: rung lắc)",
-    "ev": "Vì tin tức đột ngột nên lòng đã dao động.",
+    "ej": "突然の知らせにひどく動揺した。",
+    "er": "とつぜんのしらせにひどくどうようした。\\n🇬🇧 EN: agitation, disturbance\\n🧠 Kanji: 動 (động: lay động) + 揺 (dao: rung lắc)",
+    "ev": "Đã rất dao động vì tin tức đột ngột.",
     "v2": "bối rối",
     "ev2": "Nghe kết quả đó, cô ấy hơi bối rối."
   },
@@ -546,7 +546,7 @@
     "ej": "名前と住所を登録してください。",
     "er": "なまえとじゅうしょをとうろくしてください。\\n🇬🇧 EN: registration\\n🧠 Kanji: 登 (đăng: ghi vào) + 録 (lục: ghi chép)",
     "ev": "Hãy đăng ký tên và địa chỉ.",
-    "v2": "đăng ký",
-    "ev2": "Tôi đã đăng ký tài khoản mới vào sáng nay."
+    "v2": "ghi danh",
+    "ev2": "Tôi đã ghi danh tài khoản mới vào sáng nay."
   }
 ]
