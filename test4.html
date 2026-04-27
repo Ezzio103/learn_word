@@ -124,8 +124,7 @@
           const [remainingWords, setRemainingWords] = useState([]);
           const [completedCount, setCompletedCount] = useState(0);
           const [currentIndex, setCurrentIndex] = useState(0);
-          const [timeLeftMs, setTimeLeftMs] = useState(0);
-          const [timerDurationMs, setTimerDurationMs] = useState(0);
+          const [timeLeft, setTimeLeft] = useState(0);
           const [isRunning, setIsRunning] = useState(false);
           const [isPaused, setIsPaused] = useState(false);
           const [showSettings, setShowSettings] = useState(false);
@@ -138,14 +137,7 @@
           });
 
           const BATCH_SIZE = 10;
-          const AUTO_ADVANCE_DELAY_MS = 500;
-          const TIMER_TICK_MS = 50;
           const fileInputRef = useRef(null);
-          const timerLastTickRef = useRef(0);
-          const autoAdvanceRemainingMsRef = useRef(0);
-          const timeoutHandledRef = useRef(false);
-
-          const timeLeft = Math.ceil(Math.max(timeLeftMs, 0) / 1000);
 
           const resetRangeToDefault = useCallback((totalWords) => {
             if (totalWords <= 0) {
@@ -310,23 +302,6 @@
             discoverRepoLessonFiles();
           }, [discoverRepoLessonFiles]);
 
-          const clearRoundTimer = useCallback(() => {
-            setTimeLeftMs(0);
-            setTimerDurationMs(0);
-            autoAdvanceRemainingMsRef.current = 0;
-            timeoutHandledRef.current = true;
-          }, []);
-
-          const resetRoundTimer = useCallback((seconds) => {
-            const safeSeconds = Math.max(1, Number(seconds) || 1);
-            const durationMs = safeSeconds * 1000;
-            setTimerDurationMs(durationMs);
-            setTimeLeftMs(durationMs);
-            autoAdvanceRemainingMsRef.current = durationMs + AUTO_ADVANCE_DELAY_MS;
-            timerLastTickRef.current = performance.now();
-            timeoutHandledRef.current = false;
-          }, []);
-
           const startSession = () => {
             let nextBatch = [];
             let newRemaining = [];
@@ -346,7 +321,7 @@
             setRemainingWords(newRemaining);
             setPhase('LEARN');
             setCurrentIndex(0);
-            resetRoundTimer(settings.LEARN);
+            setTimeLeft(settings.LEARN);
             setIsRunning(true);
             setIsPaused(false);
             setShowSettings(false);
@@ -379,32 +354,30 @@
               setCompletedCount(prev => prev + batch.length);
               setPhase('DONE');
               setIsRunning(false);
-              clearRoundTimer();
             } else {
               setTargetPhase(next);
               setPhase('TRANSITION');
-              resetRoundTimer(settings.TRANSITION);
+              setTimeLeft(settings.TRANSITION);
             }
-          }, [phase, batch, settings.TRANSITION, clearRoundTimer, resetRoundTimer]);
+          }, [phase, batch, settings.TRANSITION]);
 
           const handleTimeout = useCallback(() => {
             if (feedback !== null || isPaused || showSettings) return;
             
             if (phase === 'TRANSITION') {
-              const nextPhase = targetPhase || 'QUIZ1';
-              setPhase(nextPhase);
+              setPhase(targetPhase);
               setCurrentIndex(0);
-              resetRoundTimer(settings[nextPhase] || 5);
+              setTimeLeft(settings[targetPhase] || 5);
               const shuffledBatch = shuffle([...batch]);
               setBatch(shuffledBatch);
-              if (nextPhase.startsWith('QUIZ')) generateOptions(shuffledBatch[0]);
+              if (targetPhase.startsWith('QUIZ')) generateOptions(shuffledBatch[0]);
               return;
             }
 
             if (phase === 'LEARN') {
               if (currentIndex < batch.length - 1) {
                 setCurrentIndex(currentIndex + 1);
-                resetRoundTimer(settings.LEARN);
+                setTimeLeft(settings.LEARN);
               } else {
                 handleNextPhase();
               }
@@ -413,39 +386,29 @@
               setTimeout(() => {
                 if (currentIndex < batch.length - 1) {
                   setCurrentIndex(currentIndex + 1);
-                  resetRoundTimer(settings[phase] || 5);
+                  setTimeLeft(settings[phase] || 5);
                   generateOptions(batch[currentIndex + 1]);
                 } else {
                   handleNextPhase();
                 }
                 setFeedback(null);
-              }, 0); 
+              }, 500); 
             }
-          }, [phase, targetPhase, currentIndex, batch, handleNextPhase, generateOptions, feedback, settings, isPaused, showSettings, resetRoundTimer]);
+          }, [phase, targetPhase, currentIndex, batch, handleNextPhase, generateOptions, feedback, settings, isPaused, showSettings]);
 
           useEffect(() => {
-            if (!isRunning || feedback !== null || isPaused || showSettings) return;
+            let timerId;
+            if (timeLeft > 0 && isRunning && feedback === null && !isPaused && !showSettings) {
+              timerId = setTimeout(() => setTimeLeft(t => t - 1), 1000);
+            }
+            return () => clearTimeout(timerId);
+          }, [timeLeft, isRunning, feedback, isPaused, showSettings]);
 
-            timerLastTickRef.current = performance.now();
-
-            const timerId = setInterval(() => {
-              const now = performance.now();
-              const elapsedMs = now - timerLastTickRef.current;
-              timerLastTickRef.current = now;
-
-              setTimeLeftMs((prevMs) => Math.max(prevMs - elapsedMs, 0));
-
-              const nextAutoAdvanceMs = autoAdvanceRemainingMsRef.current - elapsedMs;
-              autoAdvanceRemainingMsRef.current = Math.max(nextAutoAdvanceMs, 0);
-
-              if (nextAutoAdvanceMs <= 0 && !timeoutHandledRef.current) {
-                timeoutHandledRef.current = true;
-                handleTimeout();
-              }
-            }, TIMER_TICK_MS);
-
-            return () => clearInterval(timerId);
-          }, [isRunning, feedback, isPaused, showSettings, handleTimeout]);
+          useEffect(() => {
+            if (timeLeft === 0 && isRunning && feedback === null && !isPaused && !showSettings) {
+              handleTimeout();
+            }
+          }, [timeLeft, isRunning, feedback, handleTimeout, isPaused, showSettings]);
 
           const handleAnswer = (option) => {
             if (feedback !== null || isPaused || showSettings) return; 
@@ -457,7 +420,7 @@
               setTimeout(() => {
                 if (currentIndex < batch.length - 1) {
                   setCurrentIndex(currentIndex + 1);
-                  resetRoundTimer(settings[phase] || 5);
+                  setTimeLeft(settings[phase] || 5);
                   generateOptions(batch[currentIndex + 1]);
                 } else {
                   handleNextPhase();
@@ -474,13 +437,13 @@
             setSettings(prev => ({ ...prev, [key]: Number(value) }));
           };
 
-          const renderTimerBar = () => {
-            const percentage = timerDurationMs > 0 ? (timeLeftMs / timerDurationMs) * 100 : 0;
+          const renderTimerBar = (maxTime) => {
+            const percentage = (maxTime > 0) ? (timeLeft / maxTime) * 100 : 0;
             return (
               <div className="w-full bg-gray-700 h-2 mt-4 rounded-full overflow-hidden relative">
                 <div 
-                  className={`h-full transition-[width] duration-75 ease-linear ${timeLeftMs <= 2000 ? 'bg-red-500' : 'bg-green-500'} ${isPaused || showSettings ? 'opacity-50' : 'opacity-100'}`}
-                  style={{ width: `${Math.min(100, Math.max(0, percentage))}%` }}
+                  className={`h-full transition-all duration-1000 ease-linear ${timeLeft <= 2 ? 'bg-red-500' : 'bg-green-500'} ${isPaused || showSettings ? 'opacity-50' : 'opacity-100'}`}
+                  style={{ width: `${percentage}%` }}
                 ></div>
               </div>
             );
@@ -662,22 +625,13 @@
             );
           }
 
-          const InGameBottomBar = () => (
-            <div className="mt-3 grid grid-cols-2 gap-3 w-full">
-              <button
-                onClick={() => { if (!showSettings) setIsPaused(!isPaused); }}
-                disabled={showSettings}
-                className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold border transition-all ${isPaused ? 'bg-red-600 border-red-400 text-white animate-pulse' : 'bg-gray-800 border-gray-600 text-yellow-300 hover:bg-gray-700'} ${showSettings ? 'opacity-50 cursor-not-allowed' : ''}`}
-              >
-                {isPaused ? <PlayCircle className="w-5 h-5" /> : <Pause className="w-5 h-5" />}
-                {isPaused ? 'Tiếp tục' : 'Tạm dừng'}
+          const InGameTopBar = () => (
+            <div className="absolute top-4 right-4 flex gap-2 z-50">
+              <button onClick={() => {if(!showSettings) setIsPaused(!isPaused)}} className={`p-3 rounded-full ${isPaused ? 'bg-red-500 animate-pulse' : 'bg-gray-800'}`}>
+                {isPaused ? <PlayCircle className="w-6 h-6 text-white"/> : <Pause className="w-6 h-6 text-yellow-400"/>}
               </button>
-              <button
-                onClick={() => setShowSettings(!showSettings)}
-                className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold border transition-all ${showSettings ? 'bg-blue-600 border-blue-400 text-white' : 'bg-gray-800 border-gray-600 text-blue-300 hover:bg-gray-700'}`}
-              >
-                <Settings className="w-5 h-5" />
-                {showSettings ? 'Đóng cài đặt' : 'Cài đặt'}
+              <button onClick={() => setShowSettings(!showSettings)} className={`p-3 rounded-full ${showSettings ? 'bg-blue-500' : 'bg-gray-800'}`}>
+                <Settings className="w-6 h-6 text-white"/>
               </button>
             </div>
           );
@@ -703,6 +657,7 @@
           if (phase === 'TRANSITION') {
             return (
               <div className="flex flex-col items-center justify-center min-h-screen text-white p-4 relative">
+                <InGameTopBar />
                 <div className="max-w-md w-full bg-gray-800 p-8 rounded-3xl text-center border-2 border-blue-500 relative h-[500px] flex flex-col justify-center">
                    <InGameOverlay />
                    <Coffee className="w-16 h-16 text-blue-400 mx-auto mb-4 z-10" />
@@ -715,7 +670,6 @@
                    <button onClick={() => { if(!isPaused && !showSettings) handleTimeout() }} className="z-10 w-full bg-gray-700 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2">
                      Bỏ qua <FastForward className="w-5 h-5" />
                    </button>
-                   <InGameBottomBar />
                 </div>
               </div>
             );
@@ -727,6 +681,7 @@
           if (phase === 'LEARN') {
             return (
               <div className="flex flex-col items-center justify-center min-h-screen text-white p-4 relative">
+                <InGameTopBar />
                 <div className="max-w-lg w-full">
                   <div className="flex justify-between items-center mb-4 text-gray-400 font-bold">
                     <span className="text-blue-400">{phaseNamesMap[phase]}</span>
@@ -761,12 +716,11 @@
 
                       <p className="text-lg text-green-400 font-medium">{currentWord.ev}</p>
                     </div>
-                    <div className="w-full">{renderTimerBar()}</div>
+                    <div className="w-full">{renderTimerBar(settings.LEARN)}</div>
                   </div>
                   <button onClick={() => { if(!isPaused && !showSettings) handleTimeout() }} className="mt-6 w-full flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-xl">
                     Đã thuộc <FastForward className="w-5 h-5" />
                   </button>
-                  <InGameBottomBar />
                 </div>
               </div>
             );
@@ -774,6 +728,7 @@
 
           let quizTitle = phaseNamesMap[phase];
           let questionContent = null;
+          let phaseSettingTime = settings[phase];
 
           if (phase === 'QUIZ1') {
             questionContent = <><h2 className="text-5xl font-black text-yellow-400 mb-2">{currentWord.k}</h2><p className="text-2xl text-blue-300">{currentWord.r}</p></>;
@@ -795,6 +750,7 @@
 
           return (
             <div className={`flex flex-col items-center justify-center min-h-screen p-4 transition-colors ${feedback === 'wrong' ? 'bg-red-900' : 'bg-gray-900'} text-white relative`}>
+              <InGameTopBar />
               <div className="max-w-lg w-full mt-10">
                 <div className="flex justify-between items-center mb-4 text-gray-400 font-bold">
                   <span className="text-red-400">{quizTitle}</span>
@@ -820,9 +776,8 @@
                       );
                     })}
                   </div>
-                  <div className="w-full mt-6 z-10">{renderTimerBar()}</div>
+                  <div className="w-full mt-6 z-10">{renderTimerBar(phaseSettingTime)}</div>
                 </div>
-                <InGameBottomBar />
               </div>
             </div>
           );
